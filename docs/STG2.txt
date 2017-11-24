@@ -1,0 +1,63 @@
+stage2
+________________________________________________
+Manufacturing
+Next Upgrade at: 10 Factories 
+Clips per Second: 801.0 million 
+Unused Clips: 21.6 billion 
+
+Clip Factory 1
+  Disassemble All    
+Cost: 1.0 billion clips
+________________________________________________
+Wire Production
+Next Upgrade at: 500 Drones 
+Available Matter: 6.0 octillion g
+Acquired Matter: 31.6 billion g
+(1.2 billion g per sec)
+Wire: 0 inches
+(801.0 million inches per sec) 
+
+  Harvester Drone   1
++10  +100  +1k
+  Disassemble All    
+Cost: 4.7 million clips
+
+      Wire Drone     1
++10  +100  +1k
+  Disassemble All    
+Cost: 4.7 million clips
+________________________________________________
+Computational Resources
+
+Swarm Computing
+Drones: 302.0
+Status: Active
+Next gift in Infinity hours
+Work  
+Think
+________________________________________________
+Projects
+________________________________________________
+Strategic Modeling
+________________________________________________
+Power
+Factory/Drone Performance: 25%
+
+Consumption: 202 MWs
+Factories: 200 MWs
+Drones: 2 MWs
+
+Production: 50 MWs
+Solar Farm 1
++10  +100
+  Disassemble All    
+Cost: 686.8 million clips
+
+Storage: 0 / 10,000 MW-seconds
+Battery Tower 1
++10  +100
+  Disassemble All    
+Cost: 58.1 million clips
+
+
+

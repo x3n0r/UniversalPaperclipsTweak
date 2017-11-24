@@ -1,0 +1,70 @@
+Stage1
+________________________________________________
+Business
+Available Funds: $ 9,870,352.36
+Avg. Rev. per sec: $ 191.12
+Avg. Clips Sold per sec: 3,822
+Unsold Inventory: 3,529,412
+lower  raise Price per Clip: $ 0.05
+Public Demand: 2,400%
+
+Marketing Level: 1
+Cost: $ 100.00
+________________________________________________
+Manufacturing
+Clips per Second: 23,782
+
+WireBuyer ON
+Wire 0 inches
+Cost: $ 32
+
+AutoClippers 99
+Cost: $ 12,532.82
+
+MegaClippers 17
+Cost: $ 3,158.81
+________________________________________________
+Computational Resources
+Trust: 144
++1 Trust at: 9,227,465,000 clips
+
+Processors 7  
+  Memory   73  
+
+Operations: 31,722 / 73,000
+Creativity: 10,892
+
+Quantum Computing
+
+Compute   
+________________________________________________
+Projects
+HypnoDrones (70,000 ops)
+Autonomous aerial brand ambassadors
+________________________________________________
+Investments   
+  Deposit  
+
+  Withdraw
+Cash: $0
+Stocks: $0
+Total: $0
+Stock	Amt.	Price	Total	P/L
+ 	 	 	 	 
+ 	 	 	 	 
+ 	 	 	 	 
+ 	 	 	 	 
+ 	 	 	 	 
+Upgrade Investment Engine Level: 0
+Cost: 100 Yomi
+________________________________________________
+Strategic Modeling    Run
+Round 11
+  GREEDYA100
+ 	opera	football
+opera	6,6	3,7
+football	7,3	5,5
+Yomi: 25,986,484
+  New Tournament   AutoTourney ON
+Cost: 16.000 ops
+________________________________________________
