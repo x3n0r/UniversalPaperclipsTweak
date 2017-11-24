@@ -1153,11 +1153,12 @@ if (probesLostCombat<1) {combatBodyCountElement.style.display = "none";
             combatBodyCountElement.style.display = "";
             }     
 
-if (prestigeU<1 && prestigeS<1 && prestigeX<1) {prestigeDivElement.style.display = "none";
-            } else {
-            prestigeDivElement.style.display = ""; 
-            }  
-    
+
+//if (prestigeU<1 && prestigeS<1 && prestigeX<1) {prestigeDivElement.style.display = "none";
+//            } else {
+//           prestigeDivElement.style.display = ""; 
+//            }  
+
 if (wire<1){btnMakePaperclipElement.disabled = true;
             } else {
             btnMakePaperclipElement.disabled = false;    
@@ -1363,7 +1364,6 @@ if (qFlag === 0){
             } else {
             btnFactoryRebootElement.disabled = false;    
             }      
-    
     
 // PROBE DESIGN    
 
@@ -3321,14 +3321,13 @@ function cheatPrestigeS(){
 
 function cheatPrestigeX(){
     
-        prestigeX++;
-        var savePrestige = {
-        prestigeU: prestigeU,
-        prestigeS: prestigeS,
-		prestigeX: prestigeX,
-        }
-        localStorage.setItem("savePrestige",JSON.stringify(savePrestige));
-    
+	        prestigeX++;
+	        var savePrestige = {
+	        prestigeU: prestigeU,
+	        prestigeS: prestigeS,
+			prestigeX: prestigeX,
+	        }
+	        localStorage.setItem("savePrestige",JSON.stringify(savePrestige));
 }
 
 function setB(){
@@ -4147,6 +4146,7 @@ if (localStorage.getItem("savePrestige") != null) {
     refresh();
 }
 
+setPrestigeValues();
 
 // MAIN LOOP
 
@@ -4239,27 +4239,27 @@ var fbst = 1;
     
 if (factoryBoost > 1){
     fbst = factoryBoost * factoryLevel;
-    }      
+}      
 
     
 if (dismantle<4){
     clipClick(powMod*fbst*(Math.floor(factoryLevel)*factoryRate));    
-    }    
+}    
 // Then Other Probe Functions
 
 if (spaceFlag == 1) {
     
-if (probeCount<0){
-    probeCount = 0;
-}    
+	if (probeCount<0){
+		probeCount = 0;
+	}    
     
-encounterHazards();
-spawnFactories();
-spawnHarvesters();
-spawnWireDrones();
-spawnProbes();       
-drift();
-war();
+	encounterHazards();
+	spawnFactories();
+	spawnHarvesters();
+	spawnWireDrones();
+	spawnProbes();       
+	drift();
+	war();
     
 }
     
@@ -4271,15 +4271,16 @@ if (dismantle<4){
     }    
     
 // Demand Curve 
-    
-    
+        
     if (humanFlag == 1) {
     
     marketing = (Math.pow(1.1,(marketingLvl-1)));
     demand = (((.8/margin) * marketing * marketingEffectiveness)*demandBoost);
     demand = demand + ((demand/10)*prestigeU);
         
-    }      
+    }       
+ 
+
     
 // Creativity
     
@@ -4617,9 +4618,9 @@ function refresh() {
     investUpgradeCostElement.innerHTML = formatWithCommas(investUpgradeCost);
     yomiDisplayElement.innerHTML            = formatWithCommas(yomi);
     investmentLevelElement.innerHTML = investLevel;    
-    prestigeUcounterElement.innerHTML=prestigeU+1;
-    prestigeScounterElement.innerHTML=prestigeS+1;
-	prestigeXcounterElement.innerHTML=prestigeX+1;
+    prestigeUcounterElement.innerHTML=prestigeU;
+    prestigeScounterElement.innerHTML=prestigeS;
+	prestigeXcounterElement.innerHTML=prestigeX;
     newTourneyCostElement.innerHTML = formatWithCommas(tourneyCost);
     tourneyInProg = 0;
     maxTrustDisplayElement.innerHTML                 = formatWithCommas(maxTrust);
@@ -6464,3 +6465,17 @@ function loadPrestige() {
         prestigeS = loadPrestige.prestigeS;
         prestigeX = loadPrestige.prestigeX;
 }    
+
+function setPrestigeValues() {
+	//prestigeX
+	if (prestigeX > 0) {
+		autoClipperFlag=1;
+		for (var i = 1; i<=prestigeX; i++){
+		    clipmakerLevel = clipmakerLevel + 1;
+		    clipmakerLevel2Element.innerHTML = clipmakerLevel;
+		    clipperCost = (Math.pow(1.1,clipmakerLevel)+5);	
+		    clipperCost = (Math.pow(1.1,clipmakerLevel)+5);
+		    clipperCostElement.innerHTML = formatWithCommas(clipperCost, 2);
+		}
+	}
+}
