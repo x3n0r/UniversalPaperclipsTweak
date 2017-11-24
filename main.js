@@ -828,7 +828,8 @@ if (localStorage.getItem("savePrestige") != null) {
 	refresh();
 }
 
-// Check Debug
+// Check for Debug
+checkDbg(location.search);
 
 // Set Prestige Values
 setPrestigeValues();

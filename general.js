@@ -389,3 +389,23 @@ formatWithCommas = function(num, decimal) {
 	else
 		return leftNum.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + dec;
 }
+
+function checkDbg(querystring) {
+	cheatbtnsDivElement.style.display = "none";
+	if (querystring == '') return;
+	//cheatbtnsDivElement
+	var valuestring = querystring.slice(1);
+	var pairs = valuestring.split("&");
+	var pair, name , value;
+	for (var i = 0; i < pairs.length; i++) {
+		pair = pairs[i].split("=");
+		name = pair[0];
+		value = pair[1];
+		name = unescape(name).replace("+", " ");
+		value = unescape(value).replace("+", " ");
+		if ( name == "d" && value == "dbg" ) {
+			cheatbtnsDivElement.style.display = "block";
+			console.warn("block");
+		}
+	}
+}
