@@ -1,8 +1,10 @@
 /**
- * 
+ * Stage 2
  */
 
-
+// Factory
+var maxFactoryLevel = 0;
+var maxDroneLevel = 0;
 
 function makeFactory(){
     unusedClips = unusedClips - factoryCost;
@@ -35,7 +37,7 @@ function makeFactory(){
     updateUpgrades();
     
     factoryCost = factoryCost * fcmod;
- //   factoryCost = Math.log(1.25,(factoryLevel+1))*100000000;
+ // factoryCost = Math.log(1.25,(factoryLevel+1))*100000000;
     factoryCostDisplayElement.innerHTML = spellf(factoryCost); 
 }
 
@@ -111,6 +113,12 @@ function makeWireDrone(amount){
     
 }
 
+var p10h = 0;
+var p100h = 0;
+var p1000h = 0;
+var p10w = 0;
+var p100w = 0;
+var p1000w = 0;
 
 function updateDronePrices(){
     
@@ -251,6 +259,11 @@ function entertainSwarm(){
         boredomMsg = 0;
 }
 
+
+// SWARM
+var giftBits = 0;
+var giftBitGenerationRate = 0;
+
 function updateSwarm(){
     
     
@@ -319,11 +332,11 @@ function updateSwarm(){
             displayMessage("The swarm has generated a gift of "+nextGift+" additional computational capacity");
             }
         
-//        THE OLD WAY        
-//        giftCountdown = giftPeriod;
-//        elapsedTime = 0;
+// THE OLD WAY
+// giftCountdown = giftPeriod;
+// elapsedTime = 0;
         
-//        THE NEW WAY        
+// THE NEW WAY
           giftBits = 0;
         
     }
@@ -360,12 +373,13 @@ function updateSwarm(){
     
     if (swarmStatus == 0){
         
- //       THE OLD WAY
- //      elapsedTime = elapsedTime + 1;       
- //      giftCountdown = ((giftPeriod/Math.log(d)) / (sliderPos/100)) - elapsedTime; 
+ // THE OLD WAY
+ // elapsedTime = elapsedTime + 1;
+ // giftCountdown = ((giftPeriod/Math.log(d)) / (sliderPos/100)) -
+	// elapsedTime;
         
         
-//      THE NEW WAY        
+// THE NEW WAY
         giftBitGenerationRate = Math.log(d) * (sliderPos/100);
         giftBits = giftBits + giftBitGenerationRate;
         giftCountdown = (giftPeriod - giftBits) / giftBitGenerationRate;
@@ -434,6 +448,12 @@ function updateSwarm(){
 
     
 }
+
+// POWER
+var p10f = 0;
+var p100f = 0;
+var p10b = 0;
+var p100b = 0;
 
 function updatePowPrices(){
     
@@ -632,4 +652,76 @@ function updatePower(){
     }    
     
 }
+
+
+
+function updateStats(){
     
+    if (wire === 1){
+        inchSpanElement.innerHTML = "inch";
+    } else {
+        inchSpan.innerHTML = "inches";
+    }
+    
+    
+    if (milestoneFlag < 15){
+        clipsElement.innerHTML = formatWithCommas(Math.ceil(clips), 0);
+        }
+    
+    if (milestoneFlag === 15 && dismantle ==0){
+        clipsElement.innerHTML = "29,999,999,999,999,900,000,000,000,000,000,000,000,000,000,000,000,000,000";
+        clipCountCrunchedElement.innerHTML = "29.9 septendecillion"
+        }
+    
+    if (dismantle === 1){
+        clipsElement.innerHTML = "29,999,999,999,999,999,999,999,999,999,999,999,999,000,000,000,000,000,000";
+        clipCountCrunchedElement.innerHTML = "29.9 septendecillion"
+        }
+    
+    if (dismantle === 2){
+        clipsElement.innerHTML = "29,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,000,000,000";
+        clipCountCrunchedElement.innerHTML = "29.9 septendecillion"
+        }
+    
+    if (dismantle === 3){
+        clipsElement.innerHTML = "29,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,900";
+        clipCountCrunchedElement.innerHTML = "29.9 septendecillion"
+        }
+    
+    if (dismantle >=4){
+        
+    if (finalClips<10){
+        clipsElement.innerHTML = "29,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,"+"90"+finalClips;
+        clipCountCrunchedElement.innerHTML = "29.9 septendecillion"
+        } else if (finalClips>9 && finalClips<100) {
+        clipsElement.innerHTML = "29,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,"+"9"+finalClips;
+        clipCountCrunchedElement.innerHTML = "29.9 septendecillion"
+        } else if (finalClips===100) {
+        clipsElement.innerHTML = "30,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000";
+        clipCountCrunchedElement.innerHTML = "30.0 septendecillion"
+        }
+    
+    }
+    
+    clipmakerRateElement.innerHTML = formatWithCommas(Math.round(clipRate));
+    if (humanFlag===1){
+        clipmakerRate2Element.innerHTML = formatWithCommas(clipRate);
+    } else { 
+    clipmakerRate2Element.innerHTML = spellf(clipRate);
+    }      
+    nanoWireElement.innerHTML = spellf(wire);
+    fundsElement.innerHTML = formatWithCommas(funds, 2); 
+    unsoldClipsElement.innerHTML = formatWithCommas(unsoldClips,0);
+    
+    demandElement.innerHTML = formatWithCommas(demand*10,0);
+    operationsElement.innerHTML = formatWithCommas(operations);
+    trustElement.innerHTML = formatWithCommas(trust);
+    nextTrustElement.innerHTML = formatWithCommas(Math.floor(nextTrust));
+    if(creativityOn){creativityElement.innerHTML = formatWithCommas(creativity)};
+    
+    factoryLevelDisplaySpaceElement.innerHTML = spellf(factoryLevel);
+    harvesterLevelSpaceElement.innerHTML = spellf(harvesterLevel);
+    wireDroneLevelSpaceElement.innerHTML = spellf(wireDroneLevel);
+    maxOpsElement.innerHTML = formatWithCommas((memory*1000));
+                                                                            
+}

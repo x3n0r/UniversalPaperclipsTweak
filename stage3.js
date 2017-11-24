@@ -2,7 +2,35 @@
  * Stage 3
  */
 
+// PROBES
+var probeSpeed = 0;
+var probeNav = 0;
+var probeXBaseRate = 1750000000000000000;
+var probeRep = 0;
+var probeRepBaseRate = .00005;
+var partialProbeSpawn = 0;
+var probeHaz = 0;
+var probeHazBaseRate = .01;
+var partialProbeHaz = 0;
+var probesLostHaz = 0;
+var probesLostDrift = 0;
+var probesLostCombat = 0;
+var probeFac = 0;
+var probeFacBaseRate = .000001;
+var probeHarv = 0;
+var probeHarvBaseRate = .000002;
+var probeWire = 0;
+var probeWireBaseRate = .000002;
+var probeDescendents = 0;
+var drifterCount = 0;
+var probeTrust = 0;
+var probeUsedTrust = 0;
+var probeDriftBaseRate = .000001;
+var probeLaunchLevel = 0;
+var probeCost = Math.pow(10, 17);
 
+var probeTrustCost = Math.floor(Math.pow(probeTrust+1, 1.47)*200);
+// var probeCost = Math.pow((probeLaunchLevel+1), 1.44)*Math.pow(10, 24);
 
 function increaseProbeTrust(){
     yomi = yomi - probeTrustCost;
@@ -20,7 +48,8 @@ function increaseMaxTrust(){
     maxTrust = maxTrust+10;
     // maxTrustCost = Math.floor(Math.pow(maxTrust, 1.17)*1000);
     maxTrustDisplayElement.innerHTML = formatWithCommas(maxTrust);
-    // document.getElementById('maxTrustCostDisplay').innerHTML = Math.floor(maxTrustCost).toLocaleString();
+    // document.getElementById('maxTrustCostDisplay').innerHTML =
+	// Math.floor(maxTrustCost).toLocaleString();
     displayMessage("Maximum trust increased, probe design space expanded");
 }
 
@@ -196,7 +225,7 @@ function encounterHazards(){
 function spawnFactories(){
     var amount = probeCount * probeFacBaseRate * probeFac;
     
-    //FACTORIES COST 100M CLIPS EACH
+    // FACTORIES COST 100M CLIPS EACH
     if ((amount * 100000000) > unusedClips) {
         amount = Math.floor(unusedClips/100000000);
         }
@@ -209,7 +238,7 @@ function spawnFactories(){
 function spawnHarvesters(){
     var amount = probeCount * probeHarvBaseRate * probeHarv;
     
-    //DRONES COST 2M CLIPS EACH
+    // DRONES COST 2M CLIPS EACH
     if ((amount * 2000000) > unusedClips) {
         amount = Math.floor(unusedClips/2000000);
         }
@@ -222,7 +251,7 @@ function spawnHarvesters(){
 function spawnWireDrones(){
     var amount = probeCount * probeWireBaseRate * probeWire;
     
-    //DRONES COST 2M CLIPS EACH
+    // DRONES COST 2M CLIPS EACH
     if ((amount * 2000000) > unusedClips) {
         amount = Math.floor(unusedClips/2000000);
         }
@@ -251,13 +280,13 @@ function drift(){
 function war(){
     
     checkForBattles();
-//  battleClock++;
-//  if (battleClock>=battleAlarm){
-//            updateBattles();
-//            battleClock = 0;
-//    }
+// battleClock++;
+// if (battleClock>=battleAlarm){
+// updateBattles();
+// battleClock = 0;
+// }
     
-//  battleCleanUp();
+// battleCleanUp();
 
 }
 
