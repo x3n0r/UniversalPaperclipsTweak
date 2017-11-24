@@ -405,7 +405,6 @@ function checkDbg(querystring) {
 		value = unescape(value).replace("+", " ");
 		if ( name == "d" && value == "dbg" ) {
 			cheatbtnsDivElement.style.display = "block";
-			console.warn("block");
 		}
 	}
 }
