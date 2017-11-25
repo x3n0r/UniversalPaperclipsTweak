@@ -237,9 +237,12 @@
             <hr>
             Clips per Second: <span id="clipmakerRate">0</span><br /> <br />
             <div id="wireBuyerDiv">
-				<input type="checkbox" name="check1" id="wireBuyerStatus"
-					onchange="showMe('complexWireBuyerDivElement')"> <label
-					for="chkWireBuyer">Complex WireBuyer</label>
+            	<label class="switch">
+  					<input type="checkbox" name="check1" id="wireBuyerStatus"
+					onchange="showMe('complexWireBuyerDivElement')"> 
+  					<span class="slider"></span>
+				</label>
+				<label for="chkWireBuyer">Complex WireBuyer</label>
 				<div id="complexWireBuyerDivElement" style="display: none;">
 					<table class="table4">
 						<tr>
