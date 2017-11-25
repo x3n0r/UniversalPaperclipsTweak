@@ -79,16 +79,6 @@ function adjustWirePrice() {
 	}
 }
 
-function toggleWireBuyer() {
-	if (wireBuyerStatus == 1) {
-		wireBuyerStatus = 0;
-		wireBuyerStatusElement.innerHTML = "OFF";
-	} else {
-		wireBuyerStatus = 1;
-		wireBuyerStatusElement.innerHTML = "ON";
-	}
-}
-
 function buyWire() {
 	if (funds >= wireCost) {
 		wirePriceTimer = 0;
@@ -218,4 +208,48 @@ function lowerPrice() {
 		demandElement.innerHTML = demand.toFixed(2);
 		marginElement.innerHTML = margin.toFixed(2);
 	}
+}
+
+
+// Complex WireBuyer
+function showMe(box) {
+	var chboxs = document.getElementById("complexWireBuyerDivElement").style.display;
+	var vis = "none";
+	if (chboxs == "none") {
+		vis = "block";
+		wireBuyerStatus = 1;
+	}
+	if (chboxs == "block") {
+		vis = "none";
+		wireBuyerStatus = 0;
+	}
+	document.getElementById(box).style.display = vis;
+}
+
+function setWireBuyer(bool) {
+	wireBuyerStatus = bool;
+	if ( bool == 1 ) {
+		document.getElementById('wireBuyerStatus').checked = true;
+		document.getElementById('complexWireBuyerDivElement').style.display = "block";
+	} else {
+		document.getElementById('wireBuyerStatus').checked = false;
+		document.getElementById('complexWireBuyerDivElement').style.display = "none";
+	}
+}
+
+function activatechk(intvalue) {
+	if ( document.getElementById('amountvalue'+intvalue).value == "" || document.getElementById('pricevalue'+intvalue).value == "" ) {
+		document.getElementById('chkactive'+intvalue).checked = false; 
+	}
+}
+
+function btndelete(intvalue) {
+	document.getElementById('amountvalue'+intvalue).value = '';
+	document.getElementById('pricevalue'+intvalue).value = '';
+	document.getElementById('chkactive'+intvalue).checked = false; 
+}
+
+function maxLengthCheck(object) {
+	   if (object.value.length > object.maxLength)
+		      object.value = object.value.slice(0, object.maxLength)
 }

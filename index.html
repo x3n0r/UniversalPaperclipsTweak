@@ -237,10 +237,43 @@
             <hr>
             Clips per Second: <span id="clipmakerRate">0</span><br /> <br />
             <div id="wireBuyerDiv">
-               <button class="button2" id="btnToggleWireBuyer"
-                  onclick="toggleWireBuyer()">WireBuyer</button>
-               <span class="engineText6" id="wireBuyerStatus">ON</span>
-            </div>
+				<input type="checkbox" name="check1" id="wireBuyerStatus"
+					onchange="showMe('complexWireBuyerDivElement')"> <label
+					for="chkWireBuyer">Complex WireBuyer</label>
+				<div id="complexWireBuyerDivElement" style="display: none;">
+					<table class="table4">
+						<tr>
+							<th>Price</th>
+							<th>Amount</th>
+							<th>Active</th>
+						</tr>
+						<tr id="complexWireBuyer1Display" style="display: table-row;">
+							<td id="price1value">
+								<input type="number" class="no-spin" maxlength="4" oninput="maxLengthCheck(this)" id="pricevalue1" style="width: 45px" onchange="activatechk(1)"></td>
+							<td id="amount1value">
+								<input type="number" class="no-spin" maxlength="5" oninput="maxLengthCheck(this)" id="amountvalue1" style="width: 45px" onchange="activatechk(1)"></td>
+							<td id="action1value">
+								<input type="checkbox" class="checkboxonoff" name="check1" id="chkactive1" onchange="activatechk(1)">
+							</td>
+							<td id="delete1value">
+								<button class="button3" id="btn1delete" onclick="btndelete(1)">&nbsp;X&nbsp;</button>
+							</td>
+						</tr>
+						<tr id="complexWireBuyer2Display" style="display: table-row;">
+							<td id="price2value">
+								<input type="number" class="no-spin" maxlength="4" oninput="maxLengthCheck(this)" id="pricevalue2" style="width: 45px" onchange="activatechk(2)"></td>
+							<td id="amount2value">
+								<input type="number" class="no-spin" maxlength="5" oninput="maxLengthCheck(this)" id="amountvalue2" style="width: 45px" onchange="activatechk(2)"></td>
+							<td id="action2value">
+								<input type="checkbox" class="checkboxonoff" name="check2" id="chkactive2" onchange="activatechk(2)">
+							</td>
+							<td id="delete2value">
+								<button class="button3" id="btn2delete" onclick="btndelete(2)">&nbsp;X&nbsp;</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
             <button class="button2" id="btnBuyWire" onclick="buyWire()">Wire</button>
             <span class="engineText6" id="wire">1000</span><span
                class="engineText6"> inches</span><br /> Cost: $ <span

@@ -2242,7 +2242,7 @@ function refresh() {
 	updateDronePrices();
 	harvesterCostDisplayElement.innerHTML = spellf(harvesterCost);
 	wireDroneCostDisplayElement.innerHTML = spellf(wireDroneCost);
-
+	setWireBuyer(wireBuyerStatus);
 	updateUpgrades();
 	updatePower();
 	updatePowPrices();

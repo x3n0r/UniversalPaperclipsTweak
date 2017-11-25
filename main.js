@@ -206,7 +206,6 @@ var projectListTopElement;
 var investmentLevelElement;
 
 var wireCostElement;
-var wireBuyerStatusElement;
 var wireElement;
 
 var qCompDisplayElement;
@@ -382,9 +381,9 @@ function buttonUpdate() {
 	qFade = qFade - .001;
 
 	if (wireBuyerFlag == 1) {
-		wireBuyerDivElement.style.display = "";
+		wireBuyerDiv.style.display = "";
 	} else {
-		wireBuyerDivElement.style.display = "none";
+		wireBuyerDiv.style.display = "none";
 	}
 
 	if (resultsFlag == 1 && autoTourneyFlag == 1 && autoTourneyStatus == 1
@@ -885,9 +884,8 @@ window.setInterval(function() {
 					}
 
 					// WireBuyer
-
 					if (humanFlag == 1 && wireBuyerFlag == 1
-							&& wireBuyerStatus == 1 && wire <= 1) {
+							&& wireBuyerStatus == 1 && wire <= 1 ) {
 						buyWire();
 					}
 
