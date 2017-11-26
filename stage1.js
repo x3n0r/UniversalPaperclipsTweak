@@ -241,6 +241,32 @@ function activatechk(intvalue) {
 	if ( document.getElementById('amountvalue'+intvalue).value == "" || document.getElementById('pricevalue'+intvalue).value == "" ) {
 		document.getElementById('chkactive'+intvalue).checked = false; 
 	}
+	setchkact(intvalue,document.getElementById('chkactive'+intvalue).checked);
+}
+
+function setchkact(intvalue,bool) {
+	if ( intvalue == 1 ) {
+		if ( bool ) {
+			pricevalue1=document.getElementById('pricevalue'+intvalue).value;
+			amountvalue1=document.getElementById('amountvalue'+intvalue).value;
+			chkactive1=1;
+		} else {
+			chkactive1=0;
+			pricevalue1=0;
+			amountvalue1=0;
+		}
+	}
+	if ( intvalue == 2 ) {
+		if ( bool ) {
+			pricevalue2=document.getElementById('pricevalue'+intvalue).value;
+			amountvalue2=document.getElementById('amountvalue'+intvalue).value;
+			chkactive2=1;
+		} else {
+			chkactive2=0;
+			pricevalue2=0;
+			amountvalue2=0;
+		}
+	}
 }
 
 function btndelete(intvalue) {

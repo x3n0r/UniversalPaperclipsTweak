@@ -172,3 +172,12 @@ var finalClips = 0;
 var resetFlag = 2;
 var threnodyAudio = new Audio();
 var threnodyLoadedBool = false;
+
+//complex wirebuyer
+var chkactive1 = 0;
+var chkactive2 = 0;
+var pricevalue1 = 0;
+var pricevalue2 = 0;
+var amountvalue1 = 0;
+var amountvalue2 = 0;
+

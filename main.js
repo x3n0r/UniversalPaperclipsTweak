@@ -886,20 +886,24 @@ window.setInterval(function() {
 					// WireBuyer
 					//TODONOW
 					if ( humanFlag == 1 && wireBuyerFlag == 1 && wireBuyerStatus == 1 ) {
-						//chkactive1, pricevalue1, amountvalue1 
-						//chkactive2, pricevalue2, amountvalue2
-						//wire = 1000;
-						//wireCost = 20;
-						//if ( wireCost <= pricevalue2 && wire <= amountvalue2 ) {	
-						//} else if ( wireCost <= pricevalue2 && wire <= amountvalue2 ) {
-						//} else
+						if ( chkactive1 == 1  ) {
+							if ( wireCost <= pricevalue1 && wire < amountvalue1 ) {
+								buyWire();
+								console.warn("1 bought");
+							}
+						}
+						if ( chkactive2 == 1 ) {
+							if ( wireCost <= pricevalue2 && wire < amountvalue2 ) {
+								buyWire();
+								console.warn("2 bought");
+							}
+						} 
 						if ( wire <= 1 ) {
 							buyWire();
 						}
 					}
 
 					// First, Explore
-
 					if (probeCount >= 1) {
 						exploreUniverse();
 					}
