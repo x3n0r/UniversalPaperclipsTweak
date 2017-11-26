@@ -884,7 +884,6 @@ window.setInterval(function() {
 					}
 
 					// WireBuyer
-					//TODONOW
 					if ( humanFlag == 1 && wireBuyerFlag == 1 && wireBuyerStatus == 1 ) {
 						if ( chkactive1 == 1  ) {
 							if ( wireCost <= pricevalue1 && wire < amountvalue1 ) {
