@@ -884,9 +884,18 @@ window.setInterval(function() {
 					}
 
 					// WireBuyer
-					if (humanFlag == 1 && wireBuyerFlag == 1
-							&& wireBuyerStatus == 1 && wire <= 1 ) {
-						buyWire();
+					//TODONOW
+					if ( humanFlag == 1 && wireBuyerFlag == 1 && wireBuyerStatus == 1 ) {
+						//chkactive1, pricevalue1, amountvalue1 
+						//chkactive2, pricevalue2, amountvalue2
+						//wire = 1000;
+						//wireCost = 20;
+						//if ( wireCost <= pricevalue2 && wire <= amountvalue2 ) {	
+						//} else if ( wireCost <= pricevalue2 && wire <= amountvalue2 ) {
+						//} else
+						if ( wire <= 1 ) {
+							buyWire();
+						}
 					}
 
 					// First, Explore
