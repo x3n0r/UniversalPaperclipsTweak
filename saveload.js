@@ -27,7 +27,6 @@ function load(value) {
 		value='';
 	}
 	
-	console.warn("value="+value);
 	loadvars(value);
 	refresh();
 
