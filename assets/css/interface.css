@@ -751,7 +751,7 @@ p.hypnoDrone {
     background: #c8c8c8;
     border: 1px solid rgba(0, 0, 0, 1);
     outline: none;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 .projectButton:hover {
@@ -980,8 +980,8 @@ input:checked + .slider:before {
     position:fixed;
     z-index:1000;
     background:inherit;
-    margin-left:-8px;
-    margin-top:-8px;
+    margin-left:auto;
+    margin-top:auto;
 }    
     
     

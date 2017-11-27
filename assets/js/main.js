@@ -27,8 +27,8 @@ var swarmSliderDivElement;
 var factoryDivSpaceElement;
 var clipsPerSecDivElement;
 var tothDivElement;
-var strategyEngineElement;
-var tournamentManagementElement;
+var strategyEngine;
+var tournamentManagement;
 var btnQcomputeElement;
 var qComputingElement;
 var transWireElement;
@@ -61,7 +61,7 @@ var bbPayoffHElement;
 var bbPayoffVElement;
 var autoTourneyStatusElement;
 var tournamentTableElement;
-var tournamentResultsTableElement;
+var tournamentResultsTable;
 var tourneyDisplayElement;
 var payoffCellAAElement;
 var payoffCellABElement;
@@ -159,7 +159,7 @@ var newTourneyCostElement;
 var maxTrustDisplayElement;
 var victoryDivElement;
 var probeTrustCostDisplayElement;
-var tournamentResultsTableElement;
+var tournamentResultsTable;
 var farmCostElement;
 var batteryCostElement;
 var farmLevelElement;
@@ -233,7 +233,7 @@ var autoTourneyStatusDivElement;
 var autoTourneyControlElement;
 
 var wireBuyerDivElement;
-var tournamentResultsTableElement;
+var tournamentResultsTable;
 var tournamentStuffElement;
 
 var increaseMaxTrustDivElement;
@@ -261,8 +261,8 @@ var btnNewTournamentElement;
 var btnImproveInvestmentsElement;
 var investmentEngineElement;
 var investmentEngineUpgradeElement;
-var strategyEngineElement;
-var tournamentManagementElement;
+var strategyEngine;
+var tournamentManagement;
 var megaClipperDivElement;
 var btnMakeMegaClipperElement;
 var autoClipperDivElement;
@@ -372,8 +372,10 @@ function buttonUpdate() {
 
 	if (autoTourneyFlag == 1) {
 		autoTourneyControl.style.display="";
+		tournamentResultsTable.style.display="";
 	} else {
 		autoTourneyControl.style.display="none";
+		tournamentResultsTable.style.display="none";
 	}
 
 	qCompDisplayElement.style.opacity = qFade;
@@ -384,9 +386,9 @@ function buttonUpdate() {
 	} else {
 		wireBuyerDiv.style.display = "none";
 	}
-
+	
 	if (resultsFlag == 1 && autoTourneyFlag == 1 && autoTourneyStatus == 1
-			&& tournamentResultsTableElement.style.display == "") {
+			&& tournamentResultsTable.style.display == "") {
 		resultsTimer++;
 
 		if (resultsTimer >= 300 && operations >= tourneyCost) {
@@ -534,12 +536,12 @@ function buttonUpdate() {
 
 	if (strategyEngineFlag == 0) {
 
-		strategyEngineElement.style.display = "none";
-		tournamentManagementElement.style.display = "none";
+		strategyEngine.style.display = "none";
+		tournamentManagement.style.display = "none";
 	} else {
 
-		strategyEngineElement.style.display = "";
-		tournamentManagementElement.style.display = "";
+		strategyEngine.style.display = "";
+		tournamentManagement.style.display = "";
 	}
 
 	if (megaClipperFlag == 0) {
@@ -1028,8 +1030,8 @@ window.setInterval(function() {
 					}
 
 					if (dismantle >= 4) {
-						strategyEngineElement.style.display = "none";
-						tournamentManagementElement.style.display = "none";
+						strategyEngine.style.display = "none";
+						tournamentManagement.style.display = "none";
 					}
 
 					if (dismantle >= 5) {

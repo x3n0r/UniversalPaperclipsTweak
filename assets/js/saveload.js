@@ -653,8 +653,7 @@ function cacheDOMElements() {
 			.getElementById("autoTourneyStatusDiv");
 	autoTourneyControlElement = document.getElementById("autoTourneyControl");
 	wireBuyerDivElement = document.getElementById("wireBuyerDiv");
-	tournamentResultsTableElement = document
-			.getElementById("tournamentResultsTable");
+	tournamentResultsTable = document.getElementById("tournamentResultsTable");
 	tournamentStuffElement = document.getElementById("tournamentStuff");
 	increaseMaxTrustDivElement = document.getElementById("increaseMaxTrustDiv");
 	honorDivElement = document.getElementById("honorDiv");
@@ -685,9 +684,8 @@ function cacheDOMElements() {
 	investmentEngineElement = document.getElementById("investmentEngine");
 	investmentEngineUpgradeElement = document
 			.getElementById("investmentEngineUpgrade");
-	strategyEngineElement = document.getElementById("strategyEngine");
-	tournamentManagementElement = document
-			.getElementById("tournamentManagement");
+	strategyEngine = document.getElementById("strategyEngine");
+	tournamentManagement = document.getElementById("tournamentManagement");
 	megaClipperDivElement = document.getElementById("megaClipperDiv");
 	btnMakeMegaClipperElement = document.getElementById("btnMakeMegaClipper");
 	autoClipperDivElement = document.getElementById("autoClipperDiv");
@@ -798,8 +796,7 @@ function cacheDOMElements() {
 	victoryDivElement = document.getElementById("victoryDiv");
 	probeTrustCostDisplayElement = document
 			.getElementById("probeTrustCostDisplay");
-	tournamentResultsTableElement = document
-			.getElementById("tournamentResultsTable");
+	tournamentResultsTable = document.getElementById("tournamentResultsTable");
 	farmCostElement = document.getElementById('farmCost');
 	batteryCostElement = document.getElementById('batteryCost');
 	farmLevelElement = document.getElementById('farmLevel');
@@ -826,9 +823,8 @@ function cacheDOMElements() {
 	factoryDivSpaceElement = document.getElementById("factoryDivSpace");
 	clipsPerSecDivElement = document.getElementById("clipsPerSecDiv");
 	tothDivElement = document.getElementById("tothDiv");
-	strategyEngineElement = document.getElementById("strategyEngine");
-	tournamentManagementElement = document
-			.getElementById("tournamentManagement");
+	strategyEngine = document.getElementById("strategyEngine");
+	tournamentManagement = document.getElementById("tournamentManagement");
 	btnQcomputeElement = document.getElementById("btnQcompute");
 	qComputingElement = document.getElementById("qComputing");
 	transWireElement = document.getElementById("transWire");
@@ -860,8 +856,7 @@ function cacheDOMElements() {
 	bbPayoffVElement = document.getElementById("bbPayoffV");
 	autoTourneyStatusElement = document.getElementById('autoTourneyStatus');
 	tournamentTableElement = document.getElementById("tournamentTable");
-	tournamentResultsTableElement = document
-			.getElementById("tournamentResultsTable");
+	tournamentResultsTable = document.getElementById("tournamentResultsTable");
 	tourneyDisplayElement = document.getElementById("tourneyDisplay");
 	payoffCellAAElement = document.getElementById("payoffCellAA");
 	payoffCellABElement = document.getElementById("payoffCellAB");
@@ -1062,7 +1057,7 @@ function refresh() {
 	maxTrustDisplayElement.innerHTML = formatWithCommas(maxTrust);
 	victoryDivElement.style.visibility = "hidden";
 	probeTrustCostDisplayElement.innerHTML = formatWithCommas(probeTrustCost);
-	tournamentResultsTableElement.style.display = "none";
+	tournamentResultsTable.style.display = "none";
 	farmCostElement.innerHTML = spellf(farmCost);
 	batteryCostElement.innerHTML = spellf(batteryCost);
 	farmLevelElement.innerHTML = formatWithCommas(farmLevel);
@@ -1072,6 +1067,7 @@ function refresh() {
 	harvesterCostDisplayElement.innerHTML = spellf(harvesterCost);
 	wireDroneCostDisplayElement.innerHTML = spellf(wireDroneCost);
 	setWireBuyer(wireBuyerStatus);
+	setAutoTourney(autoTourneyStatus);
 	updateUpgrades();
 	updatePower();
 	updatePowPrices();
