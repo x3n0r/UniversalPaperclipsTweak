@@ -283,10 +283,8 @@ function generateGrid() {
 function toggleAutoTourney() {
 	if (autoTourneyStatus == 1) {
 		autoTourneyStatus = 0;
-		autoTourneyStatusElement.innerHTML = "OFF";
 	} else {
 		autoTourneyStatus = 1;
-		autoTourneyStatusElement.innerHTML = "ON";
 	}
 }
 

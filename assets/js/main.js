@@ -370,11 +370,9 @@ function buttonUpdate() {
 	clipCountCrunchedElement.innerHTML = spellf(Math.round(clips));
 
 	if (autoTourneyFlag == 1) {
-		autoTourneyStatusDivElement.style.display = "";
-		autoTourneyControlElement.style.display = "";
+		autoTourneyControl.style.display="";
 	} else {
-		autoTourneyStatusDivElement.style.display = "none";
-		autoTourneyControlElement.style.display = "none";
+		autoTourneyControl.style.display="none";
 	}
 
 	qCompDisplayElement.style.opacity = qFade;

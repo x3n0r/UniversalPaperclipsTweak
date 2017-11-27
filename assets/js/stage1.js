@@ -210,7 +210,6 @@ function lowerPrice() {
 	}
 }
 
-
 // Complex WireBuyer
 function showMe(box) {
 	var chboxs = document.getElementById("complexWireBuyerDivElement").style.display;

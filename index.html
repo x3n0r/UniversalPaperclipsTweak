@@ -238,7 +238,7 @@
             Clips per Second: <span id="clipmakerRate">0</span><br /> <br />
             <div id="wireBuyerDiv">
             	<label class="switch">
-  					<input type="checkbox" name="check1" id="wireBuyerStatus"
+  					<input type="checkbox" name="chkWireBuyer" id="wireBuyerStatus"
 					onchange="showMe('complexWireBuyerDivElement')"> 
   					<span class="slider"></span>
 				</label>
@@ -546,20 +546,20 @@
                <div id="tournamentResultsTable">
                   <table class="table3">
                      <tr>
-                        <td><span id=results0>&nbsp</span></td>
-                        <td><span id=results4>&nbsp</span></td>
+                        <td><span id=results0>&nbsp;</span></td>
+                        <td><span id=results4>&nbsp;</span></td>
                      </tr>
                      <tr>
-                        <td><span id=results1>&nbsp</span></td>
-                        <td><span id=results5>&nbsp</span></td>
+                        <td><span id=results1>&nbsp;</span></td>
+                        <td><span id=results5>&nbsp;</span></td>
                      </tr>
                      <tr>
-                        <td><span id=results2>&nbsp</span></td>
-                        <td><span id=results6>&nbsp</span></td>
+                        <td><span id=results2>&nbsp;</span></td>
+                        <td><span id=results6>&nbsp;</span></td>
                      </tr>
                      <tr>
-                        <td><span id=results3>&nbsp</span></td>
-                        <td><span id=results7>&nbsp</span></td>
+                        <td><span id=results3>&nbsp;</span></td>
+                        <td><span id=results7>&nbsp;</span></td>
                      </tr>
                   </table>
                </div>
@@ -569,21 +569,22 @@
             </p>
          </div>
          <div id="tournamentManagement">
-            <div id="tourneyButton">
-               <button class="button2" id="btnNewTournament"
-                  onclick="newTourney()">&nbsp New Tournament &nbsp</button>
+         	<div class="engineText2">
+            	<div id="tourneyButton">
+					<button class="button2" id="btnNewTournament"
+                  	onclick="newTourney()">New Tournament</button>
+            	</div>
+           		<div class="engineText">Cost: <span id="newTourneyCost">1,000</span> ops
+            	</div>
             </div>
             <div id="autoTourneyControl">
-               <button class="button2" id="btnToggleAutoTourney"
-                  onclick="toggleAutoTourney()">AutoTourney</button>
+				<label class="switch">
+  					<input type="checkbox" name="chkAutoTourney" id="autoTourneyStatus" onchange="toggleAutoTourney()"> 
+  					<span class="slider"></span>
+				</label>
+				<label for="chkAutoTourney">AutoTourney</label>
             </div>
-            <div id=autoTourneyStatusDiv>
-               <span class="engineText9" id="autoTourneyStatus">ON</span>
-            </div>
-            <br />
-            <p class="engineText8">
-               Cost: <span id="newTourneyCost">1,000</span> ops
-            </p>
+
          </div>
          <!--       BATTLE-->
          <div id="battleCanvasDiv">
