@@ -252,26 +252,26 @@
 						</tr>
 						<tr id="complexWireBuyer1Display" style="display: table-row;">
 							<td id="price1value">
-								<input type="number" class="no-spin" maxlength="4" oninput="maxLengthCheck(this)" id="pricevalue1" style="width: 45px" onchange="activatechk(1)"></td>
+								<input type="number" class="no-spin" maxlength="5" oninput="maxLengthCheck(this)" id="pricevalue1" style="width: 100%" onchange="activatechk(1)"></td>
 							<td id="amount1value">
-								<input type="number" class="no-spin" maxlength="5" oninput="maxLengthCheck(this)" id="amountvalue1" style="width: 45px" onchange="activatechk(1)"></td>
+								<input type="number" class="no-spin" maxlength="6" oninput="maxLengthCheck(this)" id="amountvalue1" style="width: 100%" onchange="activatechk(1)"></td>
 							<td id="action1value">
 								<input type="checkbox" class="checkboxonoff" name="check1" id="chkactive1" onchange="activatechk(1)">
 							</td>
 							<td id="delete1value">
-								<button class="button3" id="btn1delete" onclick="btndelete(1)">&nbsp;X&nbsp;</button>
+								<button class="button2" id="btn1delete" onclick="btndelete(1)">&nbsp;X&nbsp;</button>
 							</td>
 						</tr>
 						<tr id="complexWireBuyer2Display" style="display: table-row;">
 							<td id="price2value">
-								<input type="number" class="no-spin" maxlength="4" oninput="maxLengthCheck(this)" id="pricevalue2" style="width: 45px" onchange="activatechk(2)"></td>
+								<input type="number" class="no-spin" maxlength="5" oninput="maxLengthCheck(this)" id="pricevalue2" style="width: 100%" onchange="activatechk(2)"></td>
 							<td id="amount2value">
-								<input type="number" class="no-spin" maxlength="5" oninput="maxLengthCheck(this)" id="amountvalue2" style="width: 45px" onchange="activatechk(2)"></td>
+								<input type="number" class="no-spin" maxlength="6" oninput="maxLengthCheck(this)" id="amountvalue2" style="width: 100%" onchange="activatechk(2)"></td>
 							<td id="action2value">
 								<input type="checkbox" class="checkboxonoff" name="check2" id="chkactive2" onchange="activatechk(2)">
 							</td>
 							<td id="delete2value">
-								<button class="button3" id="btn2delete" onclick="btndelete(2)">&nbsp;X&nbsp;</button>
+								<button class="button2" id="btn2delete" onclick="btndelete(2)">&nbsp;X&nbsp;</button>
 							</td>
 						</tr>
 					</table>
@@ -302,7 +302,7 @@
          <!--  DEBUG  -->
          <div id="cheatbtnsDivElement">
             <button id="save1Button" class="button2" onclick="save(1)">SAVE SLOT 1</button>
-            <button id="load1Button" class="button2" onclick="load(2)">LOAD SLOT 1</button>
+            <button id="load1Button" class="button2" onclick="load(1)">LOAD SLOT 1</button>
             <br />
             <button id="save2Button" class="button2" onclick="save(2)">SAVE SLOT 2</button>
             <button id="load2Button" class="button2" onclick="load(2)">LOAD SLOT 2</button>
@@ -436,11 +436,9 @@
                </select>
                <br />
             <div id=investmentDiv1>
-               <button class="button2" id="btnInvest" onclick="investDeposit()">&nbsp
-               Deposit &nbsp</button>
+               <button class="button2" id="btnInvest" onclick="investDeposit()">Deposit</button>
                <br /> <br />
-               <button class="button2" id="btnWithdraw" onclick="investWithdraw()">&nbsp
-               Withdraw</button>
+               <button class="button2" id="btnWithdraw" onclick="investWithdraw()">Withdraw</button>
             </div>
             <div id=investmentDiv2>
                <p class="clean">
