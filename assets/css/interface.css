@@ -165,27 +165,16 @@
 }
 
 h2 {
-    line-height: 70%;
-}
-
-.shop {
-    position: absolute;
-    top: 8;
-    right: 8;
-    background-color: yellow;
-    z-index: 1;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    text-align: right;
+    line-height: 10%;
+    line-width: 100%;
+    width: 100%;
 }
 
 .toolTip {
 	position: relative;
 	display: inline-block;
+	background-color: #ffffff;
+	width: 100%
 }
 .toolTip .toolTipText {
 	visibility: hidden;
@@ -388,7 +377,7 @@ canvas {
 
 #hypnoDroneEventDiv {
   
-  float: left;
+  float: none;
   background: black;    
   width: 100%;
 
@@ -412,18 +401,22 @@ canvas {
 	float: left;
 	/*   width: 275px; */
 	width: 300px;
+	margin-left: 20px;
+	margin-top: 155px;
 }
 #middleColumn {
 	float: left;
 	/*   width: 275px; */
 	width: 300px;
 	margin-left: 20px;
+	margin-top: 155px;
 }
 #rightColumn {
 	float: left;
 	/*   width: 320px; */
 	width: 340px;
 	margin-left: 20px;
+	margin-top: 155px;
 }
 
 #investmentDiv1 {
@@ -981,3 +974,14 @@ input:checked + .slider:before {
   -ms-transform: translateX(6px);
   transform: translateX(6px);
 }
+
+.whiteboard{
+   width:100%;
+    position:fixed;
+    z-index:1000;
+    background:inherit;
+    margin-left:-8px;
+    margin-top:-8px;
+}    
+    
+    

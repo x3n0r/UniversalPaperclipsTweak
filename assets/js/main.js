@@ -326,6 +326,7 @@ var stockProfitElements = [];
 
 var tourneyResultsElements = [];
 
+
 // Cache
 cacheDOMElements();
 
