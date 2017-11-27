@@ -22,11 +22,12 @@ var stockReportCounter = 0;
 function investUpgrade() {
 	yomi = yomi - investUpgradeCost;
 	investLevel++;
-	investmentLevelElement.innerHTML = investLevel;
+	document.getElementById("investmentLevel").innerHTML = investLevel;
 	stockGainThreshold = stockGainThreshold + .01;
 	investUpgradeCost = Math.floor(Math.pow(investLevel + 1, Math.E) * 100);
-	investUpgradeCostElement.innerHTML = formatWithCommas(investUpgradeCost);
-	yomiDisplayElement.innerHTML = formatWithCommas(yomi);
+	document.getElementById("investUpgradeCost").innerHTML = investUpgradeCost
+			.toLocaleString();
+	document.getElementById("yomiDisplay").innerHTML = yomi.toLocaleString();
 	displayMessage("Investment engine upgraded, expected profit/loss ratio now "
 			+ stockGainThreshold);
 }
@@ -35,18 +36,20 @@ function investDeposit() {
 	ledger = ledger - Math.floor(funds);
 	bankroll = Math.floor(bankroll + funds);
 	funds = 0;
-	investmentBankrollElement.innerHTML = formatWithCommas(bankroll);
-	fundsElement.innerHTML = formatWithCommas(funds, 2);
-	portValueElement.innerHTML = formatWithCommas(portTotal);
+	document.getElementById('investmentBankroll').innerHTML = bankroll
+			.toLocaleString();
+	document.getElementById('funds').innerHTML = funds.toFixed(2);
+	document.getElementById('portValue').innerHTML = portTotal.toLocaleString();
 }
 
 function investWithdraw() {
 	ledger = ledger + bankroll;
 	funds = funds + bankroll;
 	bankroll = 0;
-	investmentBankrollElement.innerHTML = formatWithCommas(bankroll);
-	fundsElement.innerHTML = formatWithCommas(funds, 2);
-	portValueElement.innerHTML = formatWithCommas(portTotal);
+	document.getElementById('investmentBankroll').innerHTML = bankroll
+			.toLocaleString();
+	document.getElementById('funds').innerHTML = funds.toFixed(2);
+	document.getElementById('portValue').innerHTML = portTotal.toLocaleString();
 
 }
 
@@ -116,18 +119,20 @@ function createStock(dollars) {
 	stocks.push(newStock);
 	portfolioSize = stocks.length;
 	bankroll = bankroll - (pri * amt);
-	investmentBankrollElement.innerHTML = formatWithCommas(bankroll);
-	secValueElement.innerHTML = formatWithCommas(secTotal);
-	portValueElement.innerHTML = formatWithCommas(portTotal);
+	document.getElementById('investmentBankroll').innerHTML = bankroll
+			.toLocaleString();
+	document.getElementById('secValue').innerHTML = secTotal.toLocaleString();
+	document.getElementById('portValue').innerHTML = portTotal.toLocaleString();
 
 }
 
 function sellStock() {
 
 	bankroll = bankroll + stocks[0].total;
-	investmentBankrollElement.innerHTML = formatWithCommas(bankroll);
-	secValueElement.innerHTML = formatWithCommas(secTotal);
-	portValueElement.innerHTML = formatWithCommas(portTotal);
+	document.getElementById('investmentBankroll').innerHTML = bankroll
+			.toLocaleString();
+	document.getElementById('secValue').innerHTML = secTotal.toLocaleString();
+	document.getElementById('portValue').innerHTML = portTotal.toLocaleString();
 	stocks.splice(0, 1);
 	portfolioSize = stocks.length;
 }
@@ -196,55 +201,60 @@ function updateStocks() {
 
 // Stock List Display Routine
 
-window.setInterval(function() {
+window
+		.setInterval(
+				function() {
 
-	if (investStratElement.value == "low") {
-		riskiness = 7;
-	} else if (investStratElement.value == "med") {
-		riskiness = 5;
-	} else {
-		riskiness = 1;
-	}
+					if (document.getElementById("investStrat").value == "low") {
+						riskiness = 7;
+					} else if (document.getElementById("investStrat").value == "med") {
+						riskiness = 5;
+					} else {
+						riskiness = 1;
+					}
 
-	m = 0;
+					m = 0;
 
-	for (var i = 0; i < portfolioSize; i++) {
-		m = m + stocks[i].total;
-	}
+					for (var i = 0; i < portfolioSize; i++) {
+						m = m + stocks[i].total;
+					}
 
-	secTotal = m;
+					secTotal = m;
 
-	portTotal = bankroll + secTotal;
+					portTotal = bankroll + secTotal;
 
-	secValueElement.innerHTML = formatWithCommas(secTotal);
-	portValueElement.innerHTML = formatWithCommas(portTotal);
+					document.getElementById('secValue').innerHTML = secTotal
+							.toLocaleString();
+					document.getElementById('portValue').innerHTML = portTotal
+							.toLocaleString();
 
-	portfolioSize = stocks.length;
+					portfolioSize = stocks.length;
 
-	for (var i = 1; i <= portfolioSize; i++) { // m@ todo make this into an
-												// array ok?
-		var n = i.toString();
-		var s = i - 1;
-		stockSymbolElements[i - 1].innerHTML = stocks[s].symbol;
-		stockAmountElements[i - 1].innerHTML = Math.ceil(stocks[s].amount);
-		stockPriceElements[i - 1].innerHTML = Math.ceil(stocks[s].price);
-		stockTotalElements[i - 1].innerHTML = Math.ceil(stocks[s].total);
-		stockProfitElements[i - 1].innerHTML = Math.ceil(stocks[s].profit);
-	}
+					for (var i = 1; i <= portfolioSize; i++) {
+						var n = i.toString();
+						var s = i - 1;
+						document.getElementById("stock" + n + "Symbol").innerHTML = stocks[s].symbol;
+						document.getElementById("stock" + n + "Amount").innerHTML = Math
+								.ceil(stocks[s].amount);
+						document.getElementById("stock" + n + "Price").innerHTML = Math
+								.ceil(stocks[s].price);
+						document.getElementById("stock" + n + "Total").innerHTML = Math
+								.ceil(stocks[s].total);
+						document.getElementById("stock" + n + "Profit").innerHTML = Math
+								.ceil(stocks[s].profit);
+					}
 
-	var firstBlankSlot = portfolioSize + 1;
+					var firstBlankSlot = portfolioSize + 1;
 
-	// for(var i = firstBlankSlot; i <= 5; i++){ <------ Frank Fix
+					for (var i = firstBlankSlot; i <= 5; i++) {
+						document.getElementById("stock" + i + "Symbol").innerHTML = "&nbsp";
+						document.getElementById("stock" + i + "Amount").innerHTML = "&nbsp";
+						document.getElementById("stock" + i + "Price").innerHTML = "&nbsp";
+						document.getElementById("stock" + i + "Total").innerHTML = "&nbsp";
+						document.getElementById("stock" + i + "Profit").innerHTML = "&nbsp";
+					}
 
-	for (var i = firstBlankSlot; i < 5; i++) {
-		stockSymbolElements[i].innerHTML = "&nbsp";
-		stockAmountElements[i].innerHTML = "&nbsp";
-		stockPriceElements[i].innerHTML = "&nbsp";
-		stockTotalElements[i].innerHTML = "&nbsp";
-		stockProfitElements[i].innerHTML = "&nbsp";
-	}
-
-}, 100);
+				}, 100);
 
 window.setInterval(function() {
 	if (humanFlag == 1) {
