@@ -316,11 +316,6 @@ h2 {
     margin-bottom: 2;
 }
 
-#autoTourneyStatusDiv {
-    float: left;
-    width: 30px;
-}
-
 #tourneyButton {
     float: left;
     width: 120px;
@@ -402,21 +397,18 @@ canvas {
 	/*   width: 275px; */
 	width: 300px;
 	margin-left: 20px;
-	margin-top: 155px;
 }
 #middleColumn {
 	float: left;
 	/*   width: 275px; */
 	width: 300px;
 	margin-left: 20px;
-	margin-top: 155px;
 }
 #rightColumn {
 	float: left;
 	/*   width: 320px; */
 	width: 340px;
 	margin-left: 20px;
-	margin-top: 155px;
 }
 
 #investmentDiv1 {
@@ -977,7 +969,6 @@ input:checked + .slider:before {
 
 .whiteboard{
    width:100%;
-    position:fixed;
     z-index:1000;
     background:inherit;
     margin-left:auto;

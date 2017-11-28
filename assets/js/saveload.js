@@ -638,36 +638,28 @@ function cacheDOMElements() {
 	readoutElement4 = document.getElementById("readout4");
 	readoutElement5 = document.getElementById("readout5");
 	mpdsDivElement = document.getElementById("mdpsDiv");
-	factoryRebootToolTipElement = document
-			.getElementById("factoryRebootToolTip");
-	havesterRebootToolTipElement = document
-			.getElementById("harvesterRebootToolTip");
-	wireDroneRebootToolTipElement = document
-			.getElementById("wireDroneRebootToolTip");
+	factoryRebootToolTipElement = document.getElementById("factoryRebootToolTip");
+	havesterRebootToolTipElement = document.getElementById("harvesterRebootToolTip");
+	wireDroneRebootToolTipElement = document.getElementById("wireDroneRebootToolTip");
 	farmRebootToolTipElement = document.getElementById("farmRebootToolTip");
-	batteryRebootToolTipElement = document
-			.getElementById("batteryRebootToolTip");
+	batteryRebootToolTipElement = document.getElementById("batteryRebootToolTip");
 	swarmSliderDivElement = document.getElementById("swarmSliderDiv");
 	clipCountCrunchedElement = document.getElementById("clipCountCrunched");
-	autoTourneyStatusDivElement = document
-			.getElementById("autoTourneyStatusDiv");
 	autoTourneyControlElement = document.getElementById("autoTourneyControl");
 	wireBuyerDivElement = document.getElementById("wireBuyerDiv");
-	tournamentResultsTable = document.getElementById("tournamentResultsTable");
+	tournamentResultsTableElement = document.getElementById("tournamentResultsTable");
 	tournamentStuffElement = document.getElementById("tournamentStuff");
 	increaseMaxTrustDivElement = document.getElementById("increaseMaxTrustDiv");
 	honorDivElement = document.getElementById("honorDiv");
 	drifterDivElement = document.getElementById("drifterDiv");
 	battleCanvasDivElement = document.getElementById("battleCanvasDiv");
 	combatButtonDivElement = document.getElementById("combatButtonDiv");
-	factoryUpgradeDisplayElement = document
-			.getElementById("factoryUpgradeDisplay");
+	factoryUpgradeDisplayElement = document.getElementById("factoryUpgradeDisplay");
 	droneUpgradeDisplayElement = document.getElementById("droneUpgradeDisplay");
 	btnIncreaseMaxTrustElement = document.getElementById("btnIncreaseMaxTrust");
 	btnMakerProbeElement = document.getElementById("btnMakeProbe");
 	hazardBodyCountElement = document.getElementById("hazardBodyCount");
-	probesLostHazardsDisplayElement = document
-			.getElementById("probesLostHazardsDisplay");
+	probesLostHazardsDisplayElement = document.getElementById("probesLostHazardsDisplay");
 	driftBodyCountElement = document.getElementById("driftBodyCount");
 	combatBodyCountElement = document.getElementById("combatBodyCount");
 	prestigeDivElement = document.getElementById("prestigeDiv");
@@ -679,13 +671,11 @@ function cacheDOMElements() {
 	btnAddProcElement = document.getElementById("btnAddProc");
 	btnAddMemElement = document.getElementById("btnAddMem");
 	btnNewTournamentElement = document.getElementById("btnNewTournament");
-	btnImproveInvestmentsElement = document
-			.getElementById("btnImproveInvestments");
+	btnImproveInvestmentsElement = document.getElementById("btnImproveInvestments");
 	investmentEngineElement = document.getElementById("investmentEngine");
-	investmentEngineUpgradeElement = document
-			.getElementById("investmentEngineUpgrade");
-	strategyEngine = document.getElementById("strategyEngine");
-	tournamentManagement = document.getElementById("tournamentManagement");
+	investmentEngineUpgradeElement = document.getElementById("investmentEngineUpgrade");
+	strategyEngineElement = document.getElementById("strategyEngine");
+	tournamentManagementElement = document.getElementById("tournamentManagement");
 	megaClipperDivElement = document.getElementById("megaClipperDiv");
 	btnMakeMegaClipperElement = document.getElementById("btnMakeMegaClipper");
 	autoClipperDivElement = document.getElementById("autoClipperDiv");
@@ -707,17 +697,14 @@ function cacheDOMElements() {
 	factoryDivSpaceElement = document.getElementById("factoryDivSpace");
 	droneDivSpaceElement = document.getElementById("droneDivSpace");
 	probeDesignDivElement = document.getElementById("probeDesignDiv");
-	increaseProbeTrustDivElement = document
-			.getElementById("increaseProbeTrustDiv");
+	increaseProbeTrustDivElement = document.getElementById("increaseProbeTrustDiv");
 	qComputingElement = document.getElementById("qComputing");
 	btnMakeFactoryElement = document.getElementById("btnMakeFactory");
 	btnHarvesterRebootElement = document.getElementById("btnHarvesterReboot");
 	btnWireDroneRebootElement = document.getElementById("btnWireDroneReboot");
 	btnFactoryRebootElement = document.getElementById("btnFactoryReboot");
-	probeTrustUsedDisplayElement = document
-			.getElementById("probeTrustUsedDisplay");
-	btnIncreaseProbeTrustElement = document
-			.getElementById("btnIncreaseProbeTrust");
+	probeTrustUsedDisplayElement = document.getElementById("probeTrustUsedDisplay");
+	btnIncreaseProbeTrustElement = document.getElementById("btnIncreaseProbeTrust");
 	btnRaiseProbeSpeedElement = document.getElementById("btnRaiseProbeSpeed");
 	btnLowerProbeSpeedElement = document.getElementById("btnLowerProbeSpeed");
 	btnRaiseProbeNavElement = document.getElementById("btnRaiseProbeNav");
@@ -745,18 +732,15 @@ function cacheDOMElements() {
 	projectListTopElement = document.getElementById("projectListTop");
 	investmentLevelElement = document.getElementById("investmentLevel");
 	driftersKilledElement = document.getElementById('driftersKilled');
-	availableMatterDisplayElement = document
-			.getElementById('availableMatterDisplay');
+	availableMatterDisplayElement = document.getElementById('availableMatterDisplay');
 	honorDisplayElement = document.getElementById("honorDisplay");
 	clipmakerLevel2Element = document.getElementById('clipmakerLevel2');
 	clipperCostElement = document.getElementById('clipperCost');
-	acquiredMatterDisplayElement = document
-			.getElementById('acquiredMatterDisplay');
+	acquiredMatterDisplayElement = document.getElementById('acquiredMatterDisplay');
 	nanoWireElement = document.getElementById('nanoWire');
 	probesBornDisplayElement = document.getElementById('probesBornDisplay');
 	probesTotalDisplayElement = document.getElementById('probesTotalDisplay');
-	probesLaunchedDisplayElement = document
-			.getElementById('probesLaunchedDisplay');
+	probesLaunchedDisplayElement = document.getElementById('probesLaunchedDisplay');
 	probeCostDisplayElement = document.getElementById('probeCostDisplay');
 	probeCombatDisplayElement = document.getElementById('probeCombatDisplay');
 	probeWireDisplayElement = document.getElementById('probeWireDisplay');
@@ -774,14 +758,10 @@ function cacheDOMElements() {
 	adCostElement = document.getElementById('adCost');
 	factoryCostDisplayElement = document.getElementById('factoryCostDisplay');
 	factoryLevelDisplayElement = document.getElementById('factoryLevelDisplay');
-	wireDroneCostDisplayElement = document
-			.getElementById('wireDroneCostDisplay');
-	wireDroneLevelDisplayElement = document
-			.getElementById('wireDroneLevelDisplay');
-	harvesterCostDisplayElement = document
-			.getElementById('harvesterCostDisplay');
-	harvesterLevelDisplayElement = document
-			.getElementById('harvesterLevelDisplay');
+	wireDroneCostDisplayElement = document.getElementById('wireDroneCostDisplay');
+	wireDroneLevelDisplayElement = document.getElementById('wireDroneLevelDisplay');
+	harvesterCostDisplayElement = document.getElementById('harvesterCostDisplay');
+	harvesterLevelDisplayElement = document.getElementById('harvesterLevelDisplay');
 	megaClipperCostElement = document.getElementById('megaClipperCost');
 	megaClipperLevelElement = document.getElementById('megaClipperLevel');
 	investmentBankrollElement = document.getElementById('investmentBankroll');
@@ -794,23 +774,19 @@ function cacheDOMElements() {
 	newTourneyCostElement = document.getElementById("newTourneyCost");
 	maxTrustDisplayElement = document.getElementById("maxTrustDisplay");
 	victoryDivElement = document.getElementById("victoryDiv");
-	probeTrustCostDisplayElement = document
-			.getElementById("probeTrustCostDisplay");
-	tournamentResultsTable = document.getElementById("tournamentResultsTable");
+	probeTrustCostDisplayElement = document.getElementById("probeTrustCostDisplay");
+	tournamentResultsTableElement = document.getElementById("tournamentResultsTable");
 	farmCostElement = document.getElementById('farmCost');
 	batteryCostElement = document.getElementById('batteryCost');
 	farmLevelElement = document.getElementById('farmLevel');
 	batteryLevelElement = document.getElementById('batteryLevel');
-	availableMatterDisplayElement = document
-			.getElementById('availableMatterDisplay');
-	acquiredMatterDisplayElement = document
-			.getElementById('acquiredMatterDisplay');
+	availableMatterDisplayElement = document.getElementById('availableMatterDisplay');
+	acquiredMatterDisplayElement = document.getElementById('acquiredMatterDisplay');
 	mapsElement = document.getElementById('maps');
 	nanoWireElement = document.getElementById('nanoWire');
 	wppsElement = document.getElementById('wpps');
 	probeDesignDivElement = document.getElementById("probeDesignDiv");
-	increaseProbeTrustDivElement = document
-			.getElementById("increaseProbeTrustDiv");
+	increaseProbeTrustDivElement = document.getElementById("increaseProbeTrustDiv");
 	increaseMaxTrustDivElement = document.getElementById("increaseMaxTrustDiv");
 	spaceDivElement = document.getElementById("spaceDiv");
 	battleCanvasDivElement = document.getElementById("battleCanvasDiv");
@@ -823,8 +799,8 @@ function cacheDOMElements() {
 	factoryDivSpaceElement = document.getElementById("factoryDivSpace");
 	clipsPerSecDivElement = document.getElementById("clipsPerSecDiv");
 	tothDivElement = document.getElementById("tothDiv");
-	strategyEngine = document.getElementById("strategyEngine");
-	tournamentManagement = document.getElementById("tournamentManagement");
+	strategyEngineElement = document.getElementById("strategyEngine");
+	tournamentManagementElement = document.getElementById("tournamentManagement");
 	btnQcomputeElement = document.getElementById("btnQcompute");
 	qComputingElement = document.getElementById("qComputing");
 	transWireElement = document.getElementById("transWire");
@@ -854,9 +830,9 @@ function cacheDOMElements() {
 	baPayoffVElement = document.getElementById("baPayoffV");
 	bbPayoffHElement = document.getElementById("bbPayoffH");
 	bbPayoffVElement = document.getElementById("bbPayoffV");
-	autoTourneyStatusElement = document.getElementById('autoTourneyStatus');
+	autoTourneyStatus = document.getElementById('autoTourneyStatus');
 	tournamentTableElement = document.getElementById("tournamentTable");
-	tournamentResultsTable = document.getElementById("tournamentResultsTable");
+	tournamentResultsTableElement = document.getElementById("tournamentResultsTable");
 	tourneyDisplayElement = document.getElementById("tourneyDisplay");
 	payoffCellAAElement = document.getElementById("payoffCellAA");
 	payoffCellABElement = document.getElementById("payoffCellAB");
@@ -870,14 +846,10 @@ function cacheDOMElements() {
 	nextDroneUpgradeElement = document.getElementById("nextDroneUpgrade");
 	factoryLevelDisplayElement = document.getElementById('factoryLevelDisplay');
 	factoryCostDisplayElement = document.getElementById('factoryCostDisplay');
-	harvesterLevelDisplayElement = document
-			.getElementById('harvesterLevelDisplay');
-	harvesterCostDisplayElement = document
-			.getElementById('harvesterCostDisplay');
-	wireDroneLevelDisplayElement = document
-			.getElementById('wireDroneLevelDisplay');
-	wireDroneCostDisplayElement = document
-			.getElementById('wireDroneCostDisplay');
+	harvesterLevelDisplayElement = document.getElementById('harvesterLevelDisplay');
+	harvesterCostDisplayElement = document.getElementById('harvesterCostDisplay');
+	wireDroneLevelDisplayElement = document.getElementById('wireDroneLevelDisplay');
+	wireDroneCostDisplayElement = document.getElementById('wireDroneCostDisplay');
 	btnMakeHarvesterElement = document.getElementById("btnMakeHarvester");
 	btnHarvesterx10Element = document.getElementById("btnHarvesterx10");
 	btnHarvesterx100Element = document.getElementById("btnHarvesterx100");
@@ -907,8 +879,7 @@ function cacheDOMElements() {
 	batteryLevelElement = document.getElementById('batteryLevel');
 	batteryCostElement = document.getElementById('batteryCost');
 	powerProductionRateElement = document.getElementById("powerProductionRate");
-	powerConsumptionRateElement = document
-			.getElementById("powerConsumptionRate");
+	powerConsumptionRateElement = document.getElementById("powerConsumptionRate");
 	storedPowerElement = document.getElementById("storedPower");
 	facPowConRateElement = document.getElementById("facPowConRate");
 	dronePowConRateElement = document.getElementById("dronePowConRate");
@@ -933,22 +904,18 @@ function cacheDOMElements() {
 	trustElement = document.getElementById("trust");
 	nextTrustElement = document.getElementById("nextTrust");
 	creativityElement = document.getElementById("creativity");
-	factoryLevelDisplaySpaceElement = document
-			.getElementById("factoryLevelDisplaySpace");
+	factoryLevelDisplaySpaceElement = document.getElementById("factoryLevelDisplaySpace");
 	harvesterLevelSpaceElement = document.getElementById("harvesterLevelSpace");
 	wireDroneLevelSpaceElement = document.getElementById("wireDroneLevelSpace");
 	maxOpsElement = document.getElementById("maxOps");
 	avgSalesElement = document.getElementById("avgSales");
 	avgRevElement = document.getElementById("avgRev");
-	probeTrustCostDisplayElement = document
-			.getElementById('probeTrustCostDisplay');
+	probeTrustCostDisplayElement = document.getElementById('probeTrustCostDisplay');
 	mdpsElement = document.getElementById('mdps');
 	colonizedDisplayElement = document.getElementById('colonizedDisplay');
-	probesLostHazardsDisplayElement = document
-			.getElementById('probesLostHazardsDisplay');
+	probesLostHazardsDisplayElement = document.getElementById('probesLostHazardsDisplay');
 	probesTotalDisplayElement = document.getElementById('probesTotalDisplay');
-	probesLostDriftDisplayElement = document
-			.getElementById('probesLostDriftDisplay');
+	probesLostDriftDisplayElement = document.getElementById('probesLostDriftDisplay');
 	probesTotalDisplayElement = document.getElementById('probesTotalDisplay');
 	drifterCountElement = document.getElementById('drifterCount');
 	mapsElement = document.getElementById('maps');
@@ -1057,12 +1024,12 @@ function refresh() {
 	maxTrustDisplayElement.innerHTML = formatWithCommas(maxTrust);
 	victoryDivElement.style.visibility = "hidden";
 	probeTrustCostDisplayElement.innerHTML = formatWithCommas(probeTrustCost);
-	tournamentResultsTable.style.display = "none";
+	tournamentResultsTableElement.style.display = "none";
 	farmCostElement.innerHTML = spellf(farmCost);
 	batteryCostElement.innerHTML = spellf(batteryCost);
 	farmLevelElement.innerHTML = formatWithCommas(farmLevel);
 	batteryLevelElement.innerHTML = formatWithCommas(batteryLevel);
-
+	tournamentTableElement.style.display = "none";
 	updateDronePrices();
 	harvesterCostDisplayElement.innerHTML = spellf(harvesterCost);
 	wireDroneCostDisplayElement.innerHTML = spellf(wireDroneCost);

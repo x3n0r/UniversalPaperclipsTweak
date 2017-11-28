@@ -72,18 +72,18 @@ function cheatMoney() {
 }
 
 function cheatTrust() {
-	trust = trust + 1;
+	trust = trust + 5;
 	displayMessage("Hilary is nice. Also, Liza just cheated");
 }
 
 function cheatOps() {
-	standardOps = standardOps + 10000;
+	standardOps = standardOps + 50000;
 	displayMessage("you just cheated, Liza");
 }
 
 function cheatCreat() {
 	creativityOn = 1;
-	creativity = creativity + 1000;
+	creativity = creativity + 10000;
 	displayMessage("Liza just cheated. Very creative!");
 }
 

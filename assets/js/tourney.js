@@ -293,7 +293,7 @@ function newTourney() {
 	resultsFlag = 0;
 
 	tournamentTableElement.style.display = "";
-	tournamentResultsTable.style.display = "none";
+	tournamentResultsTableElement.style.display = "none";
 
 	high = 0;
 	tourneyInProg = 1;
@@ -510,7 +510,7 @@ function displayTourneyReport() {
 	vertStratElement.innerHTML = "&nbsp";
 	horizStratElement.innerHTML = "&nbsp";
 	tournamentTableElement.style.display = "none";
-	tournamentResultsTable.style.display = "";
+	tournamentResultsTableElement.style.display = "";
 
 }
 
@@ -523,7 +523,7 @@ function revealGrid() {
 	if (resultsFlag == 1) {
 		resultsTimer = 0;
 		tournamentTableElement.style.display = "";
-		tournamentResultsTable.style.display = "none";
+		tournamentResultsTableElement.style.display = "none";
 	}
 }
 
@@ -531,7 +531,7 @@ function revealResults() {
 
 	if (resultsFlag == 1) {
 		tournamentTableElement.style.display = "none";
-		tournamentResultsTable.style.display = "";
+		tournamentResultsTableElement.style.display = "";
 	}
 }
 

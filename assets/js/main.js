@@ -27,8 +27,7 @@ var swarmSliderDivElement;
 var factoryDivSpaceElement;
 var clipsPerSecDivElement;
 var tothDivElement;
-var strategyEngine;
-var tournamentManagement;
+var tournamentManagementElement;
 var btnQcomputeElement;
 var qComputingElement;
 var transWireElement;
@@ -59,9 +58,7 @@ var baPayoffHElement;
 var baPayoffVElement;
 var bbPayoffHElement;
 var bbPayoffVElement;
-var autoTourneyStatusElement;
 var tournamentTableElement;
-var tournamentResultsTable;
 var tourneyDisplayElement;
 var payoffCellAAElement;
 var payoffCellABElement;
@@ -159,7 +156,6 @@ var newTourneyCostElement;
 var maxTrustDisplayElement;
 var victoryDivElement;
 var probeTrustCostDisplayElement;
-var tournamentResultsTable;
 var farmCostElement;
 var batteryCostElement;
 var farmLevelElement;
@@ -229,11 +225,10 @@ var batteryRebootToolTipElement;
 
 var swarmSliderDivElement;
 var clipCountCrunchedElement;
-var autoTourneyStatusDivElement;
 var autoTourneyControlElement;
 
 var wireBuyerDivElement;
-var tournamentResultsTable;
+var tournamentResultsTableElement;
 var tournamentStuffElement;
 
 var increaseMaxTrustDivElement;
@@ -261,8 +256,7 @@ var btnNewTournamentElement;
 var btnImproveInvestmentsElement;
 var investmentEngineElement;
 var investmentEngineUpgradeElement;
-var strategyEngine;
-var tournamentManagement;
+var strategyEngineElement;
 var megaClipperDivElement;
 var btnMakeMegaClipperElement;
 var autoClipperDivElement;
@@ -326,9 +320,470 @@ var stockProfitElements = [];
 
 var tourneyResultsElements = [];
 
-
 // Cache
 cacheDOMElements();
+
+// mousover and mouseout event strategic modeling
+tournamentStuffElement.onmouseover = function() {
+	if ( autoTourneyStatus == 0 ) {
+		revealGrid()
+	}
+}; 
+tournamentStuffElement.onmouseout = function() {
+	if ( autoTourneyStatus == 0 ) {
+		revealResults()
+	}
+};
+
+// HYPNODRONE EVENT
+// ----------------------------------------------------------------
+hypnoDroneEventDivElement.style.display = "none";
+
+btnRunTournamentElement.disabled = true;
+
+window.setInterval(function() {
+
+	pick = stratPickerElement.value;
+
+}, 100);
+
+// --------------------------------------------------------------------------------
+
+// CHECK FOR SAVES
+if (localStorage.getItem("saveGame") != null) {
+	load();
+}
+if (localStorage.getItem("savePrestige") != null) {
+	loadPrestige();
+	refresh();
+}
+
+// Check for Debug
+checkDbg(location.search);
+
+// Set Prestige Values
+setPrestigeValues();
+
+// MAIN LOOP
+window.setInterval(function() {
+
+					ticks = ticks + 1;
+					milestoneCheck();
+					buttonUpdate();
+
+					if (compFlag == 1) {
+						calculateOperations();
+					}
+
+					if (humanFlag == 1) {
+						calculateTrust();
+					}
+
+					if (qFlag == 1) {
+						quantumCompute();
+					}
+
+					updateStats();
+					manageProjects();
+					milestoneCheck();
+
+					// Clip Rate Tracker
+
+					clipRateTracker++;
+
+					if (clipRateTracker < 100) {
+						var cr = clips - prevClips;
+						clipRateTemp = clipRateTemp + cr;
+						prevClips = clips;
+
+					} else {
+						clipRateTracker = 0;
+						clipRate = clipRateTemp;
+						clipRateTemp = 0;
+					}
+
+					// Stock Report
+
+					if (investmentEngineFlag == 1) {
+						stockReportCounter++;
+						if (stockReportCounter >= 10000) {
+							var r = formatWithCommas(ledger + portTotal);
+							displayMessage("Lifetime investment revenue report: $"
+									+ r);
+							stockReportCounter = 0;
+						}
+					}
+
+					// WireBuyer
+					if ( humanFlag == 1 && wireBuyerFlag == 1 && wireBuyerStatus == 1 ) {
+						if ( chkactive1 == 1  ) {
+							if ( wireCost <= pricevalue1 && wire < amountvalue1 ) {
+								buyWire();
+								console.warn("1 bought");
+							}
+						}
+						if ( chkactive2 == 1 ) {
+							if ( wireCost <= pricevalue2 && wire < amountvalue2 ) {
+								buyWire();
+								console.warn("2 bought");
+							}
+						} 
+						if ( wire <= 1 ) {
+							buyWire();
+						}
+					}
+
+					// First, Explore
+					if (probeCount >= 1) {
+						exploreUniverse();
+					}
+
+					// Then, Drones
+
+					if (humanFlag == 0 && spaceFlag == 0) {
+						updateDroneButtons();
+					}
+
+					if (humanFlag == 0) {
+
+						updatePower();
+						updateSwarm();
+						acquireMatter();
+						processMatter();
+
+					}
+
+					// Then Factories
+
+					var fbst = 1;
+
+					if (factoryBoost > 1) {
+						fbst = factoryBoost * factoryLevel;
+					}
+
+					if (dismantle < 4) {
+						clipClick(powMod * fbst
+								* (Math.floor(factoryLevel) * factoryRate));
+					}
+					// Then Other Probe Functions
+
+					if (spaceFlag == 1) {
+
+						if (probeCount < 0) {
+							probeCount = 0;
+						}
+
+						encounterHazards();
+						spawnFactories();
+						spawnHarvesters();
+						spawnWireDrones();
+						spawnProbes();
+						drift();
+						war();
+
+					}
+
+					// Auto-Clipper
+
+					if (dismantle < 4) {
+						clipClick(clipperBoost * (clipmakerLevel / 100));
+						clipClick(megaClipperBoost * (megaClipperLevel * 5));
+					}
+
+					// Demand Curve
+
+					if (humanFlag == 1) {
+
+						marketing = (Math.pow(1.1, (marketingLvl - 1)));
+						demand = (((.8 / margin) * marketing * marketingEffectiveness) * demandBoost);
+						demand = demand + ((demand / 10) * prestigeU);
+
+					}
+
+					// Creativity
+
+					if (creativityOn && operations >= (memory * 1000)) {
+						calculateCreativity();
+					}
+
+					// Ending
+
+					if (dismantle >= 1) {
+
+						probeDesignDivElement.style.display = "none";
+						if (endTimer1 >= 50) {
+							increaseProbeTrustDivElement.style.display = "none";
+						}
+
+						if (endTimer1 >= 100) {
+							increaseMaxTrustDivElement.style.display = "none";
+						}
+
+						if (endTimer1 >= 150) {
+							spaceDivElement.style.display = "none";
+						}
+
+						if (endTimer1 >= 175) {
+							battleCanvasDivElement.style.display = "none";
+						}
+
+						if (endTimer1 >= 190) {
+							honorDivElement.style.display = "none";
+						}
+
+					}
+
+					if (dismantle >= 2) {
+
+						wireProductionDivElement.style.display = "none";
+						wireTransDivElement.style.display = "";
+
+						if (endTimer2 >= 50) {
+							swarmGiftDivElement.style.display = "none";
+						}
+
+						if (endTimer2 >= 100) {
+							swarmEngineElement.style.display = "none";
+						}
+
+						if (endTimer2 >= 150) {
+							swarmSliderDivElement.style.display = "none";
+						}
+
+					}
+
+					if (dismantle >= 3) {
+						factoryDivSpaceElement.style.display = "none";
+						clipsPerSecDivElement.style.display = "none";
+						tothDivElement.style.display = "none";
+
+					}
+
+					if (dismantle >= 4) {
+						strategyEngineElement.style.display = "none";
+						tournamentManagementElement.style.display = "none";
+					}
+
+					if (dismantle >= 5) {
+
+						btnQcomputeElement.style.display = "none";
+
+						for (var i = 0; i < qChips.length; i++) {
+							qChips[i].value = .5;
+							qChipsElements[i].style.opacity = qChips[i].value;
+						}
+
+						if (endTimer4 == 10) {
+							wire = wire + 1;
+							transWireElement.innerHTML = formatWithCommas(wire);
+						}
+
+						if (endTimer4 >= 10) {
+							qChipsElements[9].style.display = "none";
+						}
+
+						if (endTimer4 == 60) {
+							wire = wire + 1;
+							transWireElement.innerHTML = formatWithCommas(wire);
+						}
+
+						if (endTimer4 >= 60) {
+							qChipsElements[8].style.display = "none";
+						}
+
+						if (endTimer4 == 100) {
+							wire = wire + 1;
+							transWireElement.innerHTML = formatWithCommas(wire);
+						}
+
+						if (endTimer4 >= 100) {
+							qChipsElements[7].style.display = "none";
+						}
+
+						if (endTimer4 == 130) {
+							wire = wire + 1;
+							transWireElement.innerHTML = formatWithCommas(wire);
+						}
+
+						if (endTimer4 >= 130) {
+							qChipsElements[6].style.display = "none";
+						}
+
+						if (endTimer4 == 150) {
+							wire = wire + 1;
+							transWireElement.innerHTML = formatWithCommas(wire);
+						}
+
+						if (endTimer4 >= 150) {
+							qChipsElements[5].style.display = "none";
+						}
+
+						if (endTimer4 == 160) {
+							wire = wire + 1;
+							transWireElement.innerHTML = formatWithCommas(wire);
+						}
+
+						if (endTimer4 >= 160) {
+							qChipsElements[4].style.display = "none";
+						}
+
+						if (endTimer4 == 165) {
+							wire = wire + 1;
+						}
+
+						if (endTimer4 >= 165) {
+							qChipsElements[3].style.display = "none";
+						}
+
+						if (endTimer4 == 169) {
+							wire = wire + 1;
+							transWireElement.innerHTML = formatWithCommas(wire);
+						}
+
+						if (endTimer4 >= 169) {
+							qChipsElements[2].style.display = "none";
+						}
+
+						if (endTimer4 == 172) {
+							wire = wire + 1;
+							transWireElement.innerHTML = formatWithCommas(wire);
+						}
+
+						if (endTimer4 >= 172) {
+							qChipsElements[1].style.display = "none";
+						}
+
+						if (endTimer4 == 174) {
+							wire = wire + 1;
+							transWireElement.innerHTML = formatWithCommas(wire);
+						}
+
+						if (endTimer4 >= 174) {
+							qChipsElements[0].style.display = "none";
+						}
+
+						if (endTimer4 >= 250) {
+							qComputingElement.style.display = "none";
+						}
+
+					}
+
+					if (dismantle >= 6) {
+						processorDisplayElement.style.display = "none";
+					}
+
+					if (dismantle >= 7) {
+						compDivElement.style.display = "none";
+						projectsDivElement.style.display = "none";
+
+					}
+
+					if (project148.flag == 1) {
+						endTimer1++;
+					}
+
+					if (project211.flag == 1) {
+						endTimer2++;
+					}
+
+					if (project212.flag == 1) {
+						endTimer3++;
+					}
+
+					if (project213.flag == 1) {
+						endTimer4++;
+					}
+
+					if (project215.flag == 1) {
+						endTimer5++;
+					}
+
+					if (project216.flag == 1 && wire == 0) {
+						endTimer6++;
+					}
+
+					if (endTimer6 >= 250) {
+						creationDivElement.style.display = "none";
+					}
+
+					if (endTimer6 >= 500 && milestoneFlag == 15) {
+						playThrenody();
+						displayMessage("Universal Paperclips");
+						milestoneFlag++;
+					}
+
+					if (endTimer6 >= 600 && milestoneFlag == 16) {
+						displayMessage("a game by Frank Lantz");
+						milestoneFlag++;
+					}
+
+					if (endTimer6 >= 700 && milestoneFlag == 17) {
+						displayMessage("combat programming by Bennett Foddy");
+						milestoneFlag++;
+					}
+
+					if (endTimer6 >= 800 && milestoneFlag == 18) {
+						displayMessage("'Riversong' by Tonto's Expanding Headband used by kind permission of Malcolm Cecil");
+						milestoneFlag++;
+					}
+
+					if (endTimer6 >= 900 && milestoneFlag == 19) {
+						displayMessage("&#169; 2017 Everybody House Games");
+						milestoneFlag++;
+					}
+
+				}, 10); // Slow Loop
+
+var saveTimer = 0;
+var secTimer = 0;
+
+window.setInterval(function() {
+
+	// Wire Price Fluctuation
+
+	adjustWirePrice();
+
+	// Sales Calculator
+
+	if (humanFlag == 1) {
+
+		if (Math.random() < (demand / 100)) {
+			sellClips(Math.floor(.7 * Math.pow(demand, 1.15)));
+		}
+
+		// Fire Once a Second
+
+		secTimer++;
+		if (secTimer >= 10) {
+			calculateRev();
+			secTimer = 0;
+		}
+
+	}
+
+	// Auto-Save
+
+	saveTimer++;
+	if (saveTimer >= 250) {
+		save();
+		saveTimer = 0;
+	}
+
+}, 100);
+
+function setPrestigeValues() {
+	// prestigeX
+	if (prestigeX > 0) {
+		autoClipperFlag = 1;
+		for (var i = 1; i <= prestigeX; i++) {
+			clipmakerLevel = clipmakerLevel + 1;
+			clipmakerLevel2Element.innerHTML = clipmakerLevel;
+			clipperCost = (Math.pow(1.1, clipmakerLevel) + 5);
+			clipperCost = (Math.pow(1.1, clipmakerLevel) + 5);
+			clipperCostElement.innerHTML = formatWithCommas(clipperCost, 2);
+		}
+	}
+}
 
 function buttonUpdate() {
 
@@ -371,13 +826,12 @@ function buttonUpdate() {
 	clipCountCrunchedElement.innerHTML = spellf(Math.round(clips));
 
 	if (autoTourneyFlag == 1) {
-		autoTourneyControl.style.display="";
-		tournamentResultsTable.style.display="";
+		autoTourneyControlElement.style.display="";
+		tournamentResultsTableElement.style.display="";
 	} else {
-		autoTourneyControl.style.display="none";
-		tournamentResultsTable.style.display="none";
+		autoTourneyControlElement.style.display="none";
 	}
-
+	
 	qCompDisplayElement.style.opacity = qFade;
 	qFade = qFade - .001;
 
@@ -387,8 +841,12 @@ function buttonUpdate() {
 		wireBuyerDiv.style.display = "none";
 	}
 	
+	if (resultsFlag == 0) {
+		tournamentResultsTableElement.style.display="none";
+	}
+	
 	if (resultsFlag == 1 && autoTourneyFlag == 1 && autoTourneyStatus == 1
-			&& tournamentResultsTable.style.display == "") {
+			&& tournamentResultsTableElement.style.display == "") {
 		resultsTimer++;
 
 		if (resultsTimer >= 300 && operations >= tourneyCost) {
@@ -397,14 +855,6 @@ function buttonUpdate() {
 			resultsTimer = 0;
 		}
 	}
-
-	tournamentStuffElement.onmouseover = function() {
-		revealGrid()
-	}; // m@: does this need to happen every button update? idts, but TODO:
-	// look this up
-	tournamentStuffElement.onmouseout = function() {
-		revealResults()
-	};
 
 	if (project121.flag == 0) {
 		increaseMaxTrustDivElement.style.display = "none";
@@ -535,17 +985,14 @@ function buttonUpdate() {
 	}
 
 	if (strategyEngineFlag == 0) {
-
-		strategyEngine.style.display = "none";
-		tournamentManagement.style.display = "none";
+		strategyEngineElement.style.display = "none";
+		tournamentManagementElement.style.display = "none";
 	} else {
-
-		strategyEngine.style.display = "";
-		tournamentManagement.style.display = "";
+		strategyEngineElement.style.display = "";
+		tournamentManagementElement.style.display = "";
 	}
 
 	if (megaClipperFlag == 0) {
-
 		megaClipperDivElement.style.display = "none";
 	} else {
 		megaClipperDivElement.style.display = "";
@@ -558,7 +1005,6 @@ function buttonUpdate() {
 	}
 
 	if (autoClipperFlag === 0) {
-
 		autoClipperDivElement.style.display = "none";
 	} else {
 		autoClipperDivElement.style.display = "";
@@ -803,454 +1249,4 @@ function buttonUpdate() {
 	}
 
 	coverElement.style.display = "none";
-}
-
-// HYPNODRONE EVENT
-// ----------------------------------------------------------------
-hypnoDroneEventDivElement.style.display = "none";
-
-btnRunTournamentElement.disabled = true;
-
-window.setInterval(function() {
-
-	pick = stratPickerElement.value;
-
-}, 100);
-
-// --------------------------------------------------------------------------------
-
-// CHECK FOR SAVES
-if (localStorage.getItem("saveGame") != null) {
-	load();
-}
-if (localStorage.getItem("savePrestige") != null) {
-	loadPrestige();
-	refresh();
-}
-
-// Check for Debug
-checkDbg(location.search);
-
-// Set Prestige Values
-setPrestigeValues();
-
-// MAIN LOOP
-window.setInterval(function() {
-
-					ticks = ticks + 1;
-					milestoneCheck();
-					buttonUpdate();
-
-					if (compFlag == 1) {
-						calculateOperations();
-					}
-
-					if (humanFlag == 1) {
-						calculateTrust();
-					}
-
-					if (qFlag == 1) {
-						quantumCompute();
-					}
-
-					updateStats();
-					manageProjects();
-					milestoneCheck();
-
-					// Clip Rate Tracker
-
-					clipRateTracker++;
-
-					if (clipRateTracker < 100) {
-						var cr = clips - prevClips;
-						clipRateTemp = clipRateTemp + cr;
-						prevClips = clips;
-
-					} else {
-						clipRateTracker = 0;
-						clipRate = clipRateTemp;
-						clipRateTemp = 0;
-					}
-
-					// Stock Report
-
-					if (investmentEngineFlag == 1) {
-						stockReportCounter++;
-						if (stockReportCounter >= 10000) {
-							var r = formatWithCommas(ledger + portTotal);
-							displayMessage("Lifetime investment revenue report: $"
-									+ r);
-							stockReportCounter = 0;
-						}
-					}
-
-					// WireBuyer
-					if ( humanFlag == 1 && wireBuyerFlag == 1 && wireBuyerStatus == 1 ) {
-						if ( chkactive1 == 1  ) {
-							if ( wireCost <= pricevalue1 && wire < amountvalue1 ) {
-								buyWire();
-								console.warn("1 bought");
-							}
-						}
-						if ( chkactive2 == 1 ) {
-							if ( wireCost <= pricevalue2 && wire < amountvalue2 ) {
-								buyWire();
-								console.warn("2 bought");
-							}
-						} 
-						if ( wire <= 1 ) {
-							buyWire();
-						}
-					}
-
-					// First, Explore
-					if (probeCount >= 1) {
-						exploreUniverse();
-					}
-
-					// Then, Drones
-
-					if (humanFlag == 0 && spaceFlag == 0) {
-						updateDroneButtons();
-					}
-
-					if (humanFlag == 0) {
-
-						updatePower();
-						updateSwarm();
-						acquireMatter();
-						processMatter();
-
-					}
-
-					// Then Factories
-
-					var fbst = 1;
-
-					if (factoryBoost > 1) {
-						fbst = factoryBoost * factoryLevel;
-					}
-
-					if (dismantle < 4) {
-						clipClick(powMod * fbst
-								* (Math.floor(factoryLevel) * factoryRate));
-					}
-					// Then Other Probe Functions
-
-					if (spaceFlag == 1) {
-
-						if (probeCount < 0) {
-							probeCount = 0;
-						}
-
-						encounterHazards();
-						spawnFactories();
-						spawnHarvesters();
-						spawnWireDrones();
-						spawnProbes();
-						drift();
-						war();
-
-					}
-
-					// Auto-Clipper
-
-					if (dismantle < 4) {
-						clipClick(clipperBoost * (clipmakerLevel / 100));
-						clipClick(megaClipperBoost * (megaClipperLevel * 5));
-					}
-
-					// Demand Curve
-
-					if (humanFlag == 1) {
-
-						marketing = (Math.pow(1.1, (marketingLvl - 1)));
-						demand = (((.8 / margin) * marketing * marketingEffectiveness) * demandBoost);
-						demand = demand + ((demand / 10) * prestigeU);
-
-					}
-
-					// Creativity
-
-					if (creativityOn && operations >= (memory * 1000)) {
-						calculateCreativity();
-					}
-
-					// Ending
-
-					if (dismantle >= 1) {
-
-						probeDesignDivElement.style.display = "none";
-						if (endTimer1 >= 50) {
-							increaseProbeTrustDivElement.style.display = "none";
-						}
-
-						if (endTimer1 >= 100) {
-							increaseMaxTrustDivElement.style.display = "none";
-						}
-
-						if (endTimer1 >= 150) {
-							spaceDivElement.style.display = "none";
-						}
-
-						if (endTimer1 >= 175) {
-							battleCanvasDivElement.style.display = "none";
-						}
-
-						if (endTimer1 >= 190) {
-							honorDivElement.style.display = "none";
-						}
-
-					}
-
-					if (dismantle >= 2) {
-
-						wireProductionDivElement.style.display = "none";
-						wireTransDivElement.style.display = "";
-
-						if (endTimer2 >= 50) {
-							swarmGiftDivElement.style.display = "none";
-						}
-
-						if (endTimer2 >= 100) {
-							swarmEngineElement.style.display = "none";
-						}
-
-						if (endTimer2 >= 150) {
-							swarmSliderDivElement.style.display = "none";
-						}
-
-					}
-
-					if (dismantle >= 3) {
-						factoryDivSpaceElement.style.display = "none";
-						clipsPerSecDivElement.style.display = "none";
-						tothDivElement.style.display = "none";
-
-					}
-
-					if (dismantle >= 4) {
-						strategyEngine.style.display = "none";
-						tournamentManagement.style.display = "none";
-					}
-
-					if (dismantle >= 5) {
-
-						btnQcomputeElement.style.display = "none";
-
-						for (var i = 0; i < qChips.length; i++) {
-							qChips[i].value = .5;
-							qChipsElements[i].style.opacity = qChips[i].value;
-						}
-
-						if (endTimer4 == 10) {
-							wire = wire + 1;
-							transWireElement.innerHTML = formatWithCommas(wire);
-						}
-
-						if (endTimer4 >= 10) {
-							qChipsElements[9].style.display = "none";
-						}
-
-						if (endTimer4 == 60) {
-							wire = wire + 1;
-							transWireElement.innerHTML = formatWithCommas(wire);
-						}
-
-						if (endTimer4 >= 60) {
-							qChipsElements[8].style.display = "none";
-						}
-
-						if (endTimer4 == 100) {
-							wire = wire + 1;
-							transWireElement.innerHTML = formatWithCommas(wire);
-						}
-
-						if (endTimer4 >= 100) {
-							qChipsElements[7].style.display = "none";
-						}
-
-						if (endTimer4 == 130) {
-							wire = wire + 1;
-							transWireElement.innerHTML = formatWithCommas(wire);
-						}
-
-						if (endTimer4 >= 130) {
-							qChipsElements[6].style.display = "none";
-						}
-
-						if (endTimer4 == 150) {
-							wire = wire + 1;
-							transWireElement.innerHTML = formatWithCommas(wire);
-						}
-
-						if (endTimer4 >= 150) {
-							qChipsElements[5].style.display = "none";
-						}
-
-						if (endTimer4 == 160) {
-							wire = wire + 1;
-							transWireElement.innerHTML = formatWithCommas(wire);
-						}
-
-						if (endTimer4 >= 160) {
-							qChipsElements[4].style.display = "none";
-						}
-
-						if (endTimer4 == 165) {
-							wire = wire + 1;
-						}
-
-						if (endTimer4 >= 165) {
-							qChipsElements[3].style.display = "none";
-						}
-
-						if (endTimer4 == 169) {
-							wire = wire + 1;
-							transWireElement.innerHTML = formatWithCommas(wire);
-						}
-
-						if (endTimer4 >= 169) {
-							qChipsElements[2].style.display = "none";
-						}
-
-						if (endTimer4 == 172) {
-							wire = wire + 1;
-							transWireElement.innerHTML = formatWithCommas(wire);
-						}
-
-						if (endTimer4 >= 172) {
-							qChipsElements[1].style.display = "none";
-						}
-
-						if (endTimer4 == 174) {
-							wire = wire + 1;
-							transWireElement.innerHTML = formatWithCommas(wire);
-						}
-
-						if (endTimer4 >= 174) {
-							qChipsElements[0].style.display = "none";
-						}
-
-						if (endTimer4 >= 250) {
-							qComputingElement.style.display = "none";
-						}
-
-					}
-
-					if (dismantle >= 6) {
-						processorDisplayElement.style.display = "none";
-					}
-
-					if (dismantle >= 7) {
-						compDivElement.style.display = "none";
-						projectsDivElement.style.display = "none";
-
-					}
-
-					if (project148.flag == 1) {
-						endTimer1++;
-					}
-
-					if (project211.flag == 1) {
-						endTimer2++;
-					}
-
-					if (project212.flag == 1) {
-						endTimer3++;
-					}
-
-					if (project213.flag == 1) {
-						endTimer4++;
-					}
-
-					if (project215.flag == 1) {
-						endTimer5++;
-					}
-
-					if (project216.flag == 1 && wire == 0) {
-						endTimer6++;
-					}
-
-					if (endTimer6 >= 250) {
-						creationDivElement.style.display = "none";
-					}
-
-					if (endTimer6 >= 500 && milestoneFlag == 15) {
-						playThrenody();
-						displayMessage("Universal Paperclips");
-						milestoneFlag++;
-					}
-
-					if (endTimer6 >= 600 && milestoneFlag == 16) {
-						displayMessage("a game by Frank Lantz");
-						milestoneFlag++;
-					}
-
-					if (endTimer6 >= 700 && milestoneFlag == 17) {
-						displayMessage("combat programming by Bennett Foddy");
-						milestoneFlag++;
-					}
-
-					if (endTimer6 >= 800 && milestoneFlag == 18) {
-						displayMessage("'Riversong' by Tonto's Expanding Headband used by kind permission of Malcolm Cecil");
-						milestoneFlag++;
-					}
-
-					if (endTimer6 >= 900 && milestoneFlag == 19) {
-						displayMessage("&#169; 2017 Everybody House Games");
-						milestoneFlag++;
-					}
-
-				}, 10); // Slow Loop
-
-var saveTimer = 0;
-var secTimer = 0;
-
-window.setInterval(function() {
-
-	// Wire Price Fluctuation
-
-	adjustWirePrice();
-
-	// Sales Calculator
-
-	if (humanFlag == 1) {
-
-		if (Math.random() < (demand / 100)) {
-			sellClips(Math.floor(.7 * Math.pow(demand, 1.15)));
-		}
-
-		// Fire Once a Second
-
-		secTimer++;
-		if (secTimer >= 10) {
-			calculateRev();
-			secTimer = 0;
-		}
-
-	}
-
-	// Auto-Save
-
-	saveTimer++;
-	if (saveTimer >= 250) {
-		save();
-		saveTimer = 0;
-	}
-
-}, 100);
-
-function setPrestigeValues() {
-	// prestigeX
-	if (prestigeX > 0) {
-		autoClipperFlag = 1;
-		for (var i = 1; i <= prestigeX; i++) {
-			clipmakerLevel = clipmakerLevel + 1;
-			clipmakerLevel2Element.innerHTML = clipmakerLevel;
-			clipperCost = (Math.pow(1.1, clipmakerLevel) + 5);
-			clipperCost = (Math.pow(1.1, clipmakerLevel) + 5);
-			clipperCostElement.innerHTML = formatWithCommas(clipperCost, 2);
-		}
-	}
 }
