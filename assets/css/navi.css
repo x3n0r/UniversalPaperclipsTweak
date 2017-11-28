@@ -31,6 +31,19 @@
 }
 #mobnav-btn:hover {
 	background-color: #f3f3f3;
+}
+#mobnav-btn:active {
+	box-shadow: inset 2px 1px 1px #999;
+	transform: translateY(1px);
+}
+#mobnav-btn:focus {
+	outline: 0;
+}
+#mobnav-btn:disabled {
+	opacity: 0.4;
+}
+#mobnav-btn:hover {
+	background-color: #f3f3f3;
 } 
 #mobnav-btn:active {
 	box-shadow: inset 2px 1px 1px #999;
@@ -64,8 +77,8 @@
 .xnav {
   position: fixed;
   background: #232128;
-  width: 15%;
-  left: 115%;
+  width: 25%;
+  left: 125%;
   right: 0;
   bottom: 0%;
   top: 0%;
@@ -81,7 +94,7 @@
 .mobile-menu-open .xnav {
   z-index: 9999999999999;
   zoom: 1;
-  left: 85%;
+  left: 75%;
 }
 
 .xnav-wrapper {
@@ -162,10 +175,13 @@
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
+@media screen and (max-width: 700px) {
 	.xnav {
-  		width: 30%;
-  		left: 130%;
+  		width: 35%;
+  		left: 135%;
+	}
+	.mobile-menu-open .xnav {
+  		left: 65%;
 	}
 }
 
