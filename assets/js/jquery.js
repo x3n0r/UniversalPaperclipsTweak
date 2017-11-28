@@ -13,4 +13,8 @@ $('.closebtn').click(function() {
 		reset_scroll();
 	});
 });
+$('.html').bind('touched'),function(e) {
+	e.preventDefault();
+	$(this).click();
+};
 // end MOBILE NAV
