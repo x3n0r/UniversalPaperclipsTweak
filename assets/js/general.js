@@ -391,9 +391,8 @@ formatWithCommas = function(num, decimal) {
 }
 
 function checkDbg(querystring) {
-	cheatbtnsDivElement.style.display = "none";
+	document.getElementById("mobnav-btn").style.display = "none";
 	if (querystring == '') return;
-	//cheatbtnsDivElement
 	var valuestring = querystring.slice(1);
 	var pairs = valuestring.split("&");
 	var pair, name , value;
@@ -404,7 +403,7 @@ function checkDbg(querystring) {
 		name = unescape(name).replace("+", " ");
 		value = unescape(value).replace("+", " ");
 		if ( name == "d" && value == "dbg" ) {
-			cheatbtnsDivElement.style.display = "block";
+			document.getElementById("mobnav-btn").style.display = "";
 		}
 	}
 }

@@ -172,9 +172,9 @@ h2 {
 
 .toolTip {
 	position: relative;
-	display: inline-block;
+	/*display: inline-block;*/
 	background-color: #ffffff;
-	width: 100%
+	width: 50%
 }
 .toolTip .toolTipText {
 	visibility: hidden;
@@ -188,8 +188,8 @@ h2 {
 	position: absolute;
 	z-index: 1;
 	bottom: 75%;
-	left: 50%;
-	margin-left: -19px;
+	left: 5%;
+	margin-left: 0px;
 	opacity: 0;
 	transition: opacity 2s;
 }
@@ -843,17 +843,17 @@ p.hypnoDrone {
 	color: black;
 	border-radius: 4px;
 }
-.button2:hover {
+.button2:hover .mobnav-btn{
 	background-color: #f3f3f3;
 }
-.button2:active {
+.button2:active .mobnav-btn{
 	box-shadow: inset 2px 1px 1px #999;
 	transform: translateY(1px);
 }
-.button2:focus {
+.button2:focus .mobnav-btn{
 	outline: 0;
 }
-.button2:disabled {
+.button2:disabled .mobnav-btn{
 	opacity: 0.4;
 }
 
@@ -966,15 +966,3 @@ input:checked + .slider:before {
   -ms-transform: translateX(6px);
   transform: translateX(6px);
 }
-
-.whiteboard{
-   width:100%;
-    z-index:1000;
-    background:inherit;
-    margin-left:auto;
-    margin-top:auto;
-    positon: top;
-    positon: fixed;
-}    
-    
-    
