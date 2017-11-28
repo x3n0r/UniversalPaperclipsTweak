@@ -843,17 +843,17 @@ p.hypnoDrone {
 	color: black;
 	border-radius: 4px;
 }
-.button2:hover .mobnav-btn{
+.button2:hover{
 	background-color: #f3f3f3;
 }
-.button2:active .mobnav-btn{
+.button2:active{
 	box-shadow: inset 2px 1px 1px #999;
 	transform: translateY(1px);
 }
-.button2:focus .mobnav-btn{
+.button2:focus{
 	outline: 0;
 }
-.button2:disabled .mobnav-btn{
+.button2:disabled{
 	opacity: 0.4;
 }
 
