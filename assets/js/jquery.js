@@ -18,28 +18,5 @@ $('*').bind('touched'),function(e) {
 	e.preventDefault();
 	$(this).click();
 };
-$('html').bind('touched'),function(e) {
-	e.preventDefault();
-	$(this).click();
-};
-$('.html').bind('touched'),function(e) {
-	e.preventDefault();
-	$(this).click();
-};
-$('#html').bind('touched'),function(e) {
-	e.preventDefault();
-	$(this).click();
-};
-$('body').bind('touched'),function(e) {
-	e.preventDefault();
-	$(this).click();
-};
-$('.body').bind('touched'),function(e) {
-	e.preventDefault();
-	$(this).click();
-};
-$('#body').bind('touched'),function(e) {
-	e.preventDefault();
-	$(this).click();
-};
+
 // end MOBILE NAV
