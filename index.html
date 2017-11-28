@@ -47,13 +47,37 @@
       <!-- END mobile -->
       <div id="page"></div>
       <div id="cover"></div>
-        <div class="whiteboard" id="navigation">
- 		      <div id="hypnoDroneEventDiv">
-         <p class="hypnoDrone">
-            <span id=hypnoDroneText></span>
-         </p>
-      </div>
-          
+        <div class="whiteboard" id="navigation" style="none">
+			<div id="cheatbtnsDivElement">
+				<button id="resetButton" class="button2" onclick="reset()">RESET ALL PROGRESS</button>
+	            <button id="save1Button" class="button2" onclick="save(1)">SAVE SLOT 1</button>
+	            <button id="load1Button" class="button2" onclick="load(1)">LOAD SLOT 1</button>
+	            <button id="save2Button" class="button2" onclick="save(2)">SAVE SLOT 2</button>
+	            <button id="load2Button" class="button2" onclick="load(2)">LOAD SLOT 2</button>
+	            <br />
+	            <button id="freeClipsButton" class="button2" onclick="cheatClips()">Free Clips</button>
+	            <button id="freeMoneyButton" class="button2" onclick="cheatMoney()">Free Money</button>
+	            <button id="freeTrustButton" class="button2" onclick="cheatTrust()">Free Trust</button>
+	            <button id="freeOpsButton" class="button2" onclick="cheatOps()">Free Ops</button>
+	            <button id="freeCreatButton" class="button2" onclick="cheatCreat()">Free Creativity</button>
+	            <button id="freeYomiButton" class="button2" onclick="cheatYomi()">Free Yomi</button>
+	            <br />
+				<button id="resetPrestige" class="button2" onclick="resetPrestige()">Reset Prestige</button>
+	            <button id="freePrestigeU" class="button2" onclick="cheatPrestigeU()">Free Prestige U</button>
+	            <button id="freePrestigeS" class="button2" onclick="cheatPrestigeS()">Free Prestige S</button>
+	            <button id="freePrestigeX" class="button2" onclick="cheatPrestigeX()">Free Prestige X</button>
+	            <br />
+	            <button id="debugBattleNumbers" class="button2" onclick="setB()">Set Battle Number 1 to 7</button>
+	            <button id="destroyAllHumansButton" class="button2" onclick="cheatHypno()">Destroy all Humans</button>
+				<button id="availMatterZero" class="button2" onclick="zeroMatter()">Set Avail Matter to 0</button>
+	            <br />
+         	</div>
+        </div>
+ 		<div id="hypnoDroneEventDiv">
+			<p class="hypnoDrone">
+            	<span id=hypnoDroneText></span>
+         	</p>
+      	</div>
 		<div id="consoleDiv">
     	     <p class="consoleOld">
         	    <span>&nbsp;.&nbsp;</span><span id="readout5"></span><br /> <span>&nbsp;.&nbsp;</span><span
@@ -65,8 +89,7 @@
             	<span>&nbsp;>&nbsp;</span><span id="readout1">Welcome to
             	Universal Paperclips</span><span id="cursor" class="pulsate">|</span>
          	</p>
-
-      	  </div>
+		</div>
       	<div id="topDiv">
 			<div id="prestigeDiv">
          	   &nbsp;Universe: <span id="prestigeUcounter">0</span> / Sim Level: <span
@@ -80,7 +103,6 @@
           	  </h2>
          	</div>
       	</div>
-      	      	</div>
       <div id="leftColumn">
          <button class="button2" id="btnMakePaperclip" onclick="clipClick(1)">Make
          Paperclip</button>
@@ -305,35 +327,6 @@
          </div>
          <br />
          <!--  DEBUG  -->
-         <div id="cheatbtnsDivElement">
-            <button id="save1Button" class="button2" onclick="save(1)">SAVE SLOT 1</button>
-            <button id="load1Button" class="button2" onclick="load(1)">LOAD SLOT 1</button>
-            <button id="save2Button" class="button2" onclick="save(2)">SAVE SLOT 2</button>
-            <button id="load2Button" class="button2" onclick="load(2)">LOAD SLOT 2</button>
-            <br />
-            <button id="resetButton" class="button2" onclick="reset()">RESET ALL PROGRESS</button>
-            <br />
-            <button id="freeClipsButton" class="button2" onclick="cheatClips()">Free Clips</button>
-            <button id="freeMoneyButton" class="button2" onclick="cheatMoney()">Free Money</button>
-            <button id="freeTrustButton" class="button2" onclick="cheatTrust()">Free Trust</button>
-            <br />
-            <button id="freeOpsButton" class="button2" onclick="cheatOps()">Free Ops</button>
-            <button id="freeCreatButton" class="button2" onclick="cheatCreat()">Free Creativity</button>
-            <button id="freeYomiButton" class="button2" onclick="cheatYomi()">Free Yomi</button>
-            <br />
-            <button id="destroyAllHumansButton" class="button2" onclick="cheatHypno()">Destroy all Humans</button>
-			<button id="availMatterZero" class="button2" onclick="zeroMatter()">Set Avail Matter to 0</button>
-            <br />
-			<button id="resetPrestige" class="button2" onclick="resetPrestige()">Reset Prestige</button>
-            <button id="freePrestigeU" class="button2" onclick="cheatPrestigeU()">Free Prestige U</button>
-            <button id="freePrestigeS" class="button2" onclick="cheatPrestigeS()">Free Prestige S</button>
-            <button id="freePrestigeX" class="button2" onclick="cheatPrestigeX()">Free Prestige X</button>
-            <br />
-            <button id="debugBattleNumbers" class="button2" onclick="setB()">Set Battle Number 1 to 7</button>
-            <br />
-
-            <br />
-         </div>
       </div>
       <!--Right Column-->
       <div id="middleColumn">
