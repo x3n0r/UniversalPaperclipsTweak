@@ -973,6 +973,8 @@ input:checked + .slider:before {
     background:inherit;
     margin-left:auto;
     margin-top:auto;
+    positon: top;
+    positon: fixed;
 }    
     
     
