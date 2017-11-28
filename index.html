@@ -2,6 +2,7 @@
    <head>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" type="text/css" href="assets/css/interface.css" />
+	  <link rel="stylesheet" type="text/css" href="assets/css/navi.css" />
       <!-- Global Site Tag (gtag.js) - Google Analytics -->
       <script async
          src="https://www.googletagmanager.com/gtag/js?id=UA-107491380-1"></script>
@@ -47,32 +48,6 @@
       <!-- END mobile -->
       <div id="page"></div>
       <div id="cover"></div>
-        <div class="whiteboard" id="navigation" style="none">
-			<div id="cheatbtnsDivElement">
-				<button id="resetButton" class="button2" onclick="reset()">RESET ALL PROGRESS</button>
-	            <button id="save1Button" class="button2" onclick="save(1)">SAVE SLOT 1</button>
-	            <button id="load1Button" class="button2" onclick="load(1)">LOAD SLOT 1</button>
-	            <button id="save2Button" class="button2" onclick="save(2)">SAVE SLOT 2</button>
-	            <button id="load2Button" class="button2" onclick="load(2)">LOAD SLOT 2</button>
-	            <br />
-	            <button id="freeClipsButton" class="button2" onclick="cheatClips()">Free Clips</button>
-	            <button id="freeMoneyButton" class="button2" onclick="cheatMoney()">Free Money</button>
-	            <button id="freeTrustButton" class="button2" onclick="cheatTrust()">Free Trust</button>
-	            <button id="freeOpsButton" class="button2" onclick="cheatOps()">Free Ops</button>
-	            <button id="freeCreatButton" class="button2" onclick="cheatCreat()">Free Creativity</button>
-	            <button id="freeYomiButton" class="button2" onclick="cheatYomi()">Free Yomi</button>
-	            <br />
-				<button id="resetPrestige" class="button2" onclick="resetPrestige()">Reset Prestige</button>
-	            <button id="freePrestigeU" class="button2" onclick="cheatPrestigeU()">Free Prestige U</button>
-	            <button id="freePrestigeS" class="button2" onclick="cheatPrestigeS()">Free Prestige S</button>
-	            <button id="freePrestigeX" class="button2" onclick="cheatPrestigeX()">Free Prestige X</button>
-	            <br />
-	            <button id="debugBattleNumbers" class="button2" onclick="setB()">Set Battle Number 1 to 7</button>
-	            <button id="destroyAllHumansButton" class="button2" onclick="cheatHypno()">Destroy all Humans</button>
-				<button id="availMatterZero" class="button2" onclick="zeroMatter()">Set Avail Matter to 0</button>
-	            <br />
-         	</div>
-        </div>
  		<div id="hypnoDroneEventDiv">
 			<p class="hypnoDrone">
             	<span id=hypnoDroneText></span>
@@ -101,7 +76,53 @@
             <h2>
                	Paperclips: <span id="clips">0</span>
           	  </h2>
-         	</div>
+         </div>
+	<!-- start MOBILE BTN -->
+	<div id="mobnav-btn" style="none">
+		<div class="mobnav-icon">Menu</div>
+	</div>
+	<!-- end MOBILE BTN -->
+	<div class="xnav">
+		<div class="xnav-wrapper">
+			<ul class="sf-menu">
+				<li><a href="#" class="closebtn">&times;</a></li>
+				<li><a href="#" onclick="reset()">Reset Progress</a></li>
+				<li><a href="#">Load/Save</a>
+					<ul>
+						<li><a href="#" onclick="save(1)">Save_1</a></li>
+						<li><a href="#" onclick="load(1)">Load_1</a></li>
+						<li><a href="#" onclick="save(2)">Save_2</a></li>
+						<li><a href="#" onclick="load(2)">Load_2</a></li>						
+					</ul>
+				</li>
+				<li><a href="#">Free</a>
+					<ul>
+						<li><a href="#" onclick="cheatClips()">Clips</a></li>
+						<li><a href="#" onclick="cheatMoney()">Money</a></li>
+						<li><a href="#" onclick="cheatTrust()">Trust</a></li>
+						<li><a href="#" onclick="cheatOps()">Ops</a></li>
+						<li><a href="#" onclick="cheatCreat()">Creativity</a></li>
+						<li><a href="#" onclick="cheatYomi()">Yomi</a></li>
+					</ul>
+				</li>
+				<li><a href="#" onclick="resetPrestige()">Reset Prestige</a>
+					<ul>
+						<li><a href="#" onclick="cheatPrestigeU()">Prestige U</a></li>
+						<li><a href="#" onclick="cheatPrestigeS()">Prestige S</a></li>
+						<li><a href="#" onclick="cheatPrestigeX()">Prestige X</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Other</a>
+					<ul>
+						<li><a href="#" onclick="setB()">Set BattleNR 1to7</a></li>
+						<li><a href="#" onclick="cheatHypno()">Destr. all Humans</a></li>
+						<li><a href="#" onclick="zeroMatter()">Set avail. Matter to 0</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- end REGULAR CMS NAV -->
       	</div>
       <div id="leftColumn">
          <button class="button2" id="btnMakePaperclip" onclick="clipClick(1)">Make
@@ -822,5 +843,6 @@
       <script type="text/javascript" src="assets/js/globals.js"></script>
       <script type="text/javascript" src="assets/js/projects.js"></script>
       <script type="text/javascript" src="assets/js/main.js"></script>
+	  <script type="text/javascript" src="assets/js/jquery.js"></script>
    </body>
 </html>
